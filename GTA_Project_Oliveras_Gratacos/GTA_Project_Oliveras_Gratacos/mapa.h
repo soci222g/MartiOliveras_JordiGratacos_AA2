@@ -16,7 +16,7 @@ enum class Cella
 class Mapa
 {
 public:
-	Mapa(int width, int heigh, Vector playerPos);
+	Mapa(Vector playerPos);
 	~Mapa();
 
 	void printMapaTotal(Player jugador);
