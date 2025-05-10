@@ -51,7 +51,7 @@ Mapa::Mapa(int Width, int Heigh, Vector playerPos) {
 	for (int i = 0; i < width; i++) {
 		for (int j = 0; j < heigh; j++) {
 
-			if (i == playerPos.X || j == playerPos.Y) {
+			if (i == playerPos.X && j == playerPos.Y) {
 				mapa[i][j] = Cella::PLAYER;
 			}
 		}
