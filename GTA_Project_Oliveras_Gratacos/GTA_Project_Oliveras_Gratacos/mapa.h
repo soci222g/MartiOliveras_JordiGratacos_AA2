@@ -2,6 +2,7 @@
 #include"Vector.h"
 #include"player.h"
 #include"peaton.h"
+#include<vector>
 
 enum class Cella
 {
@@ -22,7 +23,7 @@ public:
 	
 	void addPlayerMapa(Player player);
 	
-	//void addPeatonesMapa(peaton peatonPos[], int size);
+	void addPeatonesMapa(std::vector<peaton> peatones_array, int size);
 
 	void printMapaTotal(Player jugador);
 

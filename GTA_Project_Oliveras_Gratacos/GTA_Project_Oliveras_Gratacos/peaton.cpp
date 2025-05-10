@@ -7,8 +7,10 @@ peaton::peaton()
 
 }
 
-peaton::peaton(int leftLimit1, int left_limit2,int Height, int mapaNum)
+peaton::peaton(int leftLimit1, int left_limit2,int Height, int mapaNum, int id)
 {
+
+	ID = id;
 	CanMove = true;
 
 	if (mapaNum == 1) {

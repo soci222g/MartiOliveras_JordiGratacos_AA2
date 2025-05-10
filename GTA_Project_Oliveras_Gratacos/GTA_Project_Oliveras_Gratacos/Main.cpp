@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include<Windows.h>
+#include<vector>
 
 #include"mapa.h"
 #include"player.h"
@@ -11,6 +12,7 @@
 
 int main()
 {
+	srand(time(NULL));
 	
 	Player player;
 
@@ -19,11 +21,18 @@ int main()
 	
 	
 	
-	peaton peatones(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 1);
+	
+
+	std::vector<peaton> SavePeatones;
+	// +1 per el id
+	for (int i = 1; i < mapa.GetN_peatones1() + 1; i++) {
+		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 1, i);
+		SavePeatones.push_back(peatons);
+	}
 
 	mapa.addPlayerMapa(player);
 
-	
+	mapa.addPeatonesMapa(SavePeatones, SavePeatones.size());
 
 	mapa.printMapaTotal(player);
 

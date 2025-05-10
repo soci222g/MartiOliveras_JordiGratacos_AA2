@@ -7,7 +7,7 @@ class peaton
 {
 public:
 	peaton();
-	peaton(int leftLimit1, int left_limit2, int Height, int mapaNum);
+	peaton(int leftLimit1, int left_limit2, int Height, int mapaNum,int id);
 	~peaton();
 
 	void SetCanMove(bool newState) { CanMove = newState; }
@@ -20,6 +20,7 @@ private:
 
 	Vector Position;
 	bool CanMove;
+	int ID;
 };
 
 

@@ -1,7 +1,7 @@
 #include"mapa.h"
 #include <fstream>
 #include <iostream>
-
+#include<vector>
 
 
 Mapa::Mapa() {
@@ -78,7 +78,7 @@ void Mapa::addPlayerMapa(Player playerPos) {
 	for (int i = 0; i < width; i++) {
 		for (int j = 0; j < heigh; j++) {
 
-			if (i == playerPos.getVector().X && j == playerPos.getVector().Y) {
+			if (j == playerPos.getVector().X && i == playerPos.getVector().Y) {
 				mapa[i][j] = Cella::PLAYER;
 			}
 		}
@@ -109,9 +109,28 @@ void Mapa::printMapaTotal(Player jugador) {
 			if (mapa[i][j] == Cella::PARED) {
 				std::cout << " " << "X" << " ";
 			}
+			if (mapa[i][j] == Cella::PEATON) {
+				std::cout << " " << "P" << " ";
+			}
 		}
 		std::cout << std::endl;
 	}
+}
+
+void Mapa::addPeatonesMapa(std::vector<peaton> array_peatones, int size) {
+
+	for (int k = 0; k < size; k++) {
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < heigh; j++) {
+
+				if (j== array_peatones[k].GetPosition().X && i == array_peatones[k].GetPosition().Y) {
+					mapa[i][j] = Cella::PEATON;
+				}
+			}
+		}
+	}
+
+
 }
 
 Mapa::~Mapa() {
