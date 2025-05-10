@@ -7,10 +7,29 @@ Player::Player()
 	position.X = 2;
 	position.Y = 2;
 	mony = 0;
+	moveInput = Movement::UP;
+
 }
 
 Player::~Player()
 {
+}
+
+void Player::Reed_input(std::string input) {
+	if (input == "W" || input == "w") {
+		moveInput = Movement::UP;
+	}
+
+	if (input == "S" || input == "s") {
+		moveInput = Movement::DOWM;
+	}
+	if (input == "A" || input == "a") {
+		moveInput = Movement::LEFT;
+	}
+	if (input == "D" || input == "d") {
+		moveInput = Movement::RIGHT;
+	}
+
 }
 
 void Player::Move_Player(std::string input) {

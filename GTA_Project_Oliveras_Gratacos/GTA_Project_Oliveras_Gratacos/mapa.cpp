@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 
-Mapa::Mapa(int Width, int Heigh) {
+Mapa::Mapa(int Width, int Heigh, Vector playerPos) {
 	//lectura de archivos
 
 	
@@ -48,6 +48,15 @@ Mapa::Mapa(int Width, int Heigh) {
 		mapa[j][heigh - 1] = Cella::PARED;
 	}
 
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < heigh; j++) {
+
+			if (i == playerPos.X || j == playerPos.Y) {
+				mapa[i][j] = Cella::PLAYER;
+			}
+		}
+	}
+
 	
 }
 
@@ -56,11 +65,25 @@ Mapa::~Mapa() {
 
 }
 
-void Mapa::printMapaTotal() {
+void Mapa::printMapaTotal(Player jugador) {
 	for (int i = 0; i < width; i++) {
 		for (int j = 0; j < heigh; j++) {
 			if (mapa[i][j] == Cella::VACIA) {
 				std::cout << " " << " " << " ";
+			}
+			if (mapa[i][j] == Cella::PLAYER) {
+				if (jugador.getMoveInput() == Movement::UP) {
+					std::cout << " " << "^" << " ";
+				}
+				if (jugador.getMoveInput() == Movement::DOWM) {
+					std::cout << " " << "v" << " ";
+				}
+				if (jugador.getMoveInput() == Movement::LEFT) {
+					std::cout << " " << "<" << " ";
+				}
+				if (jugador.getMoveInput() == Movement::RIGHT) {
+					std::cout << " " << ">" << " ";
+				}
 			}
 			if (mapa[i][j] == Cella::PARED) {
 				std::cout << " " << "X" << " ";

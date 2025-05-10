@@ -10,7 +10,9 @@ int main()
 	int x = 10;
 	int y = 20;
 
-	Mapa mapa(x,y);
-	mapa.printMapaTotal();
+	Player player;
+
+	Mapa mapa(x,y, player.getVector());
+	mapa.printMapaTotal(player);
 
 }

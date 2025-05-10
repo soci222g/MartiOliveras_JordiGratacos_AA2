@@ -1,10 +1,13 @@
 #pragma once
+#include"Vector.h"
+#include"player.h"
 
 enum class Cella
 {
 	VACIA,
 	PEATON,
 	PARED,
+	PLAYER,
 	DINERO,
 	COUNT
 };
@@ -13,10 +16,10 @@ enum class Cella
 class Mapa
 {
 public:
-	Mapa(int width, int heigh);
+	Mapa(int width, int heigh, Vector playerPos);
 	~Mapa();
 
-	void printMapaTotal();
+	void printMapaTotal(Player jugador);
 
 
 
