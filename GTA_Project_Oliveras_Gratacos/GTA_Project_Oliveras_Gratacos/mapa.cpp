@@ -2,13 +2,24 @@
 #include <fstream>
 #include <iostream>
 
-Mapa::Mapa(int Width, int Heigh, Vector playerPos) {
+Mapa::Mapa(Vector playerPos) {
 	//lectura de archivos
+	int widthFitx, heightFitx, nPeatones1, dineroPeaje1, maxDinPeaton1, nPeatones2, dineroPeaje2, maxDinPeaton2;
+	char separator;
+	std::ifstream configFile("config.txt");
+	if (configFile.is_open())
+	{
+		configFile >> widthFitx >> separator >> heightFitx >> separator >> nPeatones1 >> separator >> dineroPeaje1 >> separator >> maxDinPeaton1 >> separator >> nPeatones2 >> separator >> dineroPeaje2 >> separator >> maxDinPeaton2;
+		std::cout << widthFitx << " " << heightFitx << " " << nPeatones1 << " " << dineroPeaje1 << " " << maxDinPeaton1 << " " << nPeatones2 << " " << dineroPeaje2 << " " << maxDinPeaton2 << std::endl;
+		configFile.close();
+	}
+	else
+	{
+		std::cout << "File ERROR." << std::endl;
+	}
 
-
-
-	width = Width;
-	heigh = Heigh;
+	width = widthFitx;
+	heigh = heightFitx;
 
 
 	mapa = new Cella * [width];

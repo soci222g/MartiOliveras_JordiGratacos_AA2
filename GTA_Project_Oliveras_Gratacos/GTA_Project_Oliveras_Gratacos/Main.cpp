@@ -7,12 +7,8 @@
 
 int main()
 {
-	int x = 10;
-	int y = 20;
-
 	Player player;
 
-	Mapa mapa(x,y, player.getVector());
+	Mapa mapa(player.getVector());
 	mapa.printMapaTotal(player);
-
 }
