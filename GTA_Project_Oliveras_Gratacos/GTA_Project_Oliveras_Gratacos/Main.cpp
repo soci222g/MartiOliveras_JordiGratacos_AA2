@@ -11,5 +11,4 @@ int main()
 
 	Mapa mapa(player.getVector());
 	mapa.printMapaTotal(player);
-
 }
