@@ -12,3 +12,21 @@ Player::Player()
 Player::~Player()
 {
 }
+
+void Player::Move_Player(std::string input) {
+	if (input == "W" || input == "w") {
+		position.Y--;
+	}
+
+	if (input == "S" || input == "s") {
+		position.Y++;
+	}
+	if (input == "A" || input == "a") {
+		position.X--;
+	}
+	if (input == "D" || input == "d") {
+		position.X++;
+	}
+
+
+}
