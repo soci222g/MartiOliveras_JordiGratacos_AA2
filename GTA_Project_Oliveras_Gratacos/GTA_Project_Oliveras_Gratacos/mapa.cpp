@@ -2,24 +2,13 @@
 #include <fstream>
 #include <iostream>
 
-Mapa::Mapa(Vector playerPos) {
+Mapa::Mapa(int Width, int Heigh, Vector playerPos) {
 	//lectura de archivos
-	int x,y;
-	char separator;
-	std::ifstream configFile("config.txt");
-	if (configFile.is_open())
-	{
-		configFile >> x >> separator >> y;
-		configFile.close();
-	}
-	else
-	{
-		std::cout << "File ERROR." << std::endl;
-	}
 
 
-	width = x;
-	heigh = y;
+
+	width = Width;
+	heigh = Heigh;
 
 
 	mapa = new Cella * [width];
