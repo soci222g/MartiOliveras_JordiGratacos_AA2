@@ -9,10 +9,12 @@ Player::Player()
 	mony = 0;
 	moveInput = Movement::UP;
 
+
+	vista = 5;
 }
 
-Player::~Player()
-{
+Player::~Player() {
+
 }
 
 void Player::Reed_input(std::string input) {

@@ -2,7 +2,9 @@
 #include <fstream>
 #include <iostream>
 
-Mapa::Mapa(Vector playerPos) {
+
+
+Mapa::Mapa() {
 	//lectura de archivos
 	int widthFitx, heightFitx, nPeatones1, dineroPeaje1, maxDinPeaton1, nPeatones2, dineroPeaje2, maxDinPeaton2;
 	char separator;
@@ -17,9 +19,15 @@ Mapa::Mapa(Vector playerPos) {
 	{
 		std::cout << "File ERROR." << std::endl;
 	}
-
+	//guardamos todas las variables
 	width = widthFitx;
 	heigh = heightFitx;
+	N_peatones1 = nPeatones1;
+	N_peatones2 = nPeatones2;
+	precioPeaje1 = dineroPeaje1;
+	precioPeaje2 = dineroPeaje2;
+	maxDinero1 = maxDinPeaton1;
+	maxDinero2 = maxDinPeaton2;
 
 
 	mapa = new Cella * [width];
@@ -35,9 +43,12 @@ Mapa::Mapa(Vector playerPos) {
 			mapa[i][j] = Cella::VACIA;
 		}
 	}
+
+	//dividim mapa
 	int columna_pared_1 = static_cast<int>(heigh * 0.33);
 	int columna_pared_2 = static_cast<int>(heigh * 0.66);
-	
+	limitLeftMapa1 = columna_pared_1;
+	limitLeftMapa2 = columna_pared_2;
 	
 	for (int i = 0; i < width; i++) {
 		for (int j = 0;  j < heigh; j++) {
@@ -58,23 +69,22 @@ Mapa::Mapa(Vector playerPos) {
 		mapa[j][0] = Cella::PARED;
 		mapa[j][heigh - 1] = Cella::PARED;
 	}
-
-	for (int i = 0; i < width; i++) {
-		for (int j = 0; j < heigh; j++) {
-
-			if (i == playerPos.X && j == playerPos.Y) {
-				mapa[i][j] = Cella::PLAYER;
-			}
-		}
-	}
+	
 
 	
 }
 
+void Mapa::addPlayerMapa(Player playerPos) {
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < heigh; j++) {
 
-Mapa::~Mapa() {
-
+			if (i == playerPos.getVector().X && j == playerPos.getVector().Y) {
+				mapa[i][j] = Cella::PLAYER;
+			}
+		}
+	}
 }
+
 
 void Mapa::printMapaTotal(Player jugador) {
 	for (int i = 0; i < width; i++) {
@@ -102,4 +112,8 @@ void Mapa::printMapaTotal(Player jugador) {
 		}
 		std::cout << std::endl;
 	}
+}
+
+Mapa::~Mapa() {
+
 }
