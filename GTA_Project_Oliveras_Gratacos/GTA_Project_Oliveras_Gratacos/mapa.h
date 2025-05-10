@@ -16,7 +16,9 @@ public:
 	Mapa(int width, int heigh);
 	~Mapa();
 
-	void printMapa();
+	void printMapaTotal();
+
+
 
 private:
 

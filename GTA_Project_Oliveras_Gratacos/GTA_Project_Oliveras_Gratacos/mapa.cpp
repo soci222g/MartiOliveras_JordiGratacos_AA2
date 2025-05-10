@@ -56,7 +56,7 @@ Mapa::~Mapa() {
 
 }
 
-void Mapa::printMapa() {
+void Mapa::printMapaTotal() {
 	for (int i = 0; i < width; i++) {
 		for (int j = 0; j < heigh; j++) {
 			if (mapa[i][j] == Cella::VACIA) {

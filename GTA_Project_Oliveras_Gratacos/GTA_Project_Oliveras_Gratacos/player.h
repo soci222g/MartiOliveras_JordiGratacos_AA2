@@ -1,5 +1,5 @@
 #pragma once
-
+#include"Vector.h"
 
 class Player
 {
@@ -10,17 +10,10 @@ public:
 private:
 	int hp;
 	int mony;
-	int positionX;
-	int positionY;
+	Vector position;
+	
 
 
 	int vista;
 };
 
-Player::Player()
-{
-}
-
-Player::~Player()
-{
-}

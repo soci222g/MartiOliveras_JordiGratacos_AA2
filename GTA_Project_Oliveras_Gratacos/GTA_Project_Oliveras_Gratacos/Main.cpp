@@ -11,5 +11,6 @@ int main()
 	int y = 20;
 
 	Mapa mapa(x,y);
+	mapa.printMapaTotal();
 
 }
