@@ -4,7 +4,7 @@
 Player::Player()
 {
 	hp = 100;
-	position.X = 2;
+	position.X = 4;
 	position.Y = 2;
 	mony = 0;
 	moveInput = Movement::UP;

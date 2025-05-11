@@ -45,8 +45,8 @@ Mapa::Mapa() {
 	}
 
 	//dividim mapa
-	int columna_pared_1 = static_cast<int>(heigh * 0.33);
-	int columna_pared_2 = static_cast<int>(heigh * 0.66);
+	int columna_pared_1 = static_cast<int>(width * 0.33);
+	int columna_pared_2 = static_cast<int>(width * 0.66);
 	limitLeftMapa1 = columna_pared_1;
 	limitLeftMapa2 = columna_pared_2;
 	
@@ -74,16 +74,6 @@ Mapa::Mapa() {
 	
 }
 
-void Mapa::addPlayerMapa(Player playerPos) {
-	for (int i = 0; i < width; i++) {
-		for (int j = 0; j < heigh; j++) {
-
-			if (j == playerPos.getVector().X && i == playerPos.getVector().Y) {
-				mapa[i][j] = Cella::PLAYER;
-			}
-		}
-	}
-}
 
 
 void Mapa::printMapaTotal(Player jugador) {
@@ -154,19 +144,28 @@ void Mapa::printPlayerView(Player player) {
 	}
 }
 
-void Mapa::addPeatonesMapa(std::vector<peaton> array_peatones, int size) {
+void Mapa::addPlayerMapa(Player playerPos) {
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < heigh; j++) {
 
-	for (int k = 0; k < size; k++) {
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < heigh; j++) {
-
-				if (j== array_peatones[k].GetPosition().X && i == array_peatones[k].GetPosition().Y) {
-					mapa[i][j] = Cella::PEATON;
-				}
+			if (i == playerPos.getVector().X && j == playerPos.getVector().Y) {
+				mapa[j][i] = Cella::PLAYER;
 			}
 		}
 	}
+}
 
+void Mapa::addPeatoneMapa(peaton peatones) {
+	
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < heigh; j++) { 
+				if (peatones.GetPosition().X == i && peatones.GetPosition().Y == j) {
+					mapa[i][j] = Cella::PEATON;
+					std::cout << peatones.getID() << std::endl;
+					break;
+				}
+			}	
+		}
 
 }
 

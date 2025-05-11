@@ -23,7 +23,7 @@ public:
 	
 	void addPlayerMapa(Player player);
 	
-	void addPeatonesMapa(std::vector<peaton> peatones_array, int size);
+	void addPeatoneMapa(peaton peaton);
 
 	void printMapaTotal(Player jugador);
 
@@ -55,7 +55,7 @@ private:
 
 
 	 int limitLeftMapa1;
-	 int limitLeftMapa2;
+	int limitLeftMapa2;
 
 	Cella** mapa;
 };

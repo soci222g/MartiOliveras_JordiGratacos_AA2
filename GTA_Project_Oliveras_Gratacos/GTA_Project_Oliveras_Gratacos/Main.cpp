@@ -29,14 +29,18 @@ int main()
 		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 1, i);
 		SavePeatones.push_back(peatons);
 	}
-
+	
 	mapa.addPlayerMapa(player);
-
-	mapa.addPeatonesMapa(SavePeatones, SavePeatones.size());
+	int pasAddMapa = 0;
+	for (int i = 0; i < SavePeatones.size(); i++) {
+		mapa.addPeatoneMapa(SavePeatones[i]);
+		pasAddMapa++;
+	}
+	
 
 	//mapa.printMapaTotal(player);
-	mapa.printPlayerView(player);
-
+	//mapa.printPlayerView(player);
+	
 
 
 }

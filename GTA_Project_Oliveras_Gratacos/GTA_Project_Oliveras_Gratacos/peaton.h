@@ -13,6 +13,8 @@ public:
 	void SetCanMove(bool newState) { CanMove = newState; }
 	bool getCanMove() { return CanMove; }
 
+	int getID() { return ID; }
+
 	void NewRandomPosition(Mapa& map);
 	Vector GetPosition() { return Position; }
 
