@@ -23,6 +23,7 @@ void Player::SeeIfCanMove(Mapa mapa) {
 	if (moveInput == Actions::UP) {
 		if (mapa.getCella(position.X, position.Y - 1) == Cella::VACIA || mapa.getCella(position.X, position.Y - 1) == Cella::PEATON) {
 			canMove = true;
+			std::cout < 
 		}
 		else {
 			canMove = false;

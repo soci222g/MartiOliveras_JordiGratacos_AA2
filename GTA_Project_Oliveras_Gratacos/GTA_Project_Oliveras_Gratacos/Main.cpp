@@ -86,11 +86,12 @@ int main()
 		player.SeeIfCanMove(mapa);
 		
 		if (player.GetCanMove() == true) {
-			player.Reed_input(player.getMoveInput());
+			
 		}
+		player.Reed_input(player.getMoveInput());
 		mapa.addPlayerMapa(player);
-		mapa.printPlayerView(player);
-
+		//mapa.printPlayerView(player);
+		mapa.printMapaTotal(player);
 
 
 		Sleep(500);

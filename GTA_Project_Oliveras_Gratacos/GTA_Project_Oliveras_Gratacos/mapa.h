@@ -56,6 +56,9 @@ private:
 	int maxDinero2;
 
 
+	int apreturaIsla1;
+	int apreturaIsla2;
+
 	 int limitLeftMapa1;
 	int limitLeftMapa2;
 

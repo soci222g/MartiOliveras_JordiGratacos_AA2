@@ -15,8 +15,8 @@ peaton::peaton(int leftLimit1, int left_limit2,int Height, int mapaNum, int id)
 
 	if (mapaNum == 1) {
 		
-		Position.X = 1 + rand() % leftLimit1 - 1;
-		Position.Y = 1 + rand() % Height - 1 ;
+		Position.X = (rand() % leftLimit1 - 1) + 2;
+		Position.Y =  (rand() % Height - 1) + 2;
 	}
 	if (mapaNum == 2) {
 		Position.X = ((leftLimit1 + 1) + rand() % left_limit2 - 1) ;

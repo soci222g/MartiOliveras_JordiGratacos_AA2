@@ -49,17 +49,26 @@ Mapa::Mapa() {
 	int columna_pared_2 = static_cast<int>(width * 0.66);
 	limitLeftMapa1 = columna_pared_1;
 	limitLeftMapa2 = columna_pared_2;
-	
+
+
+	apreturaIsla1 =  (rand() % heigh - 2) + 1;
+	apreturaIsla2 =  (rand() % heigh - 2) + 1;
+
 	for (int i = 0; i < heigh; i++) {
 		for (int j = 0;  j < width; j++) {
 			
 			if (j == limitLeftMapa1 || j == limitLeftMapa2) {
 				mapa[i][j] = Cella::PARED;
+				if (i == apreturaIsla1 && j == limitLeftMapa1 || i == apreturaIsla2 && j == limitLeftMapa2) {
+					mapa[i][j] = Cella::VACIA;
+				}
 			}
 		}
 	}
+
 	for (int i = 0; i < width; i++)
 	{
+
 		mapa[0][i] = Cella::PARED;
 		mapa[heigh - 1][i] = Cella::PARED;
 	}
