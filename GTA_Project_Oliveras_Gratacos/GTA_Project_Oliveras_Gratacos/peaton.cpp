@@ -31,32 +31,34 @@ peaton::~peaton() {
 }
 
 void peaton::NewRandomPosition(Mapa& mapa) {
-	int newNumPosition = (rand() % 4) + 1 ;
+	
+	int moveThisFrame = rand() % 1;
+	int newNumPosition = (rand() % 3) + 1 ;
 
+	int X = Position.X;
+	int Y = Position.Y;
 
-	switch (newNumPosition)
-	{
-	case 1:
-		if (mapa.getCella(Position.X += 1,Position.Y) == Cella::VACIA) {
-			Position.X += 1;
+	if (newNumPosition == 1) {
+		if (mapa.getCella(X + 1, Y) == Cella::VACIA) {
+			Position.X++;
 		}
-		break;
-	case 2:
-		if (mapa.getCella(Position.X -= 1, Position.Y) == Cella::VACIA) {
-			Position.X -= 1;
+	}
+	if (newNumPosition == 2) {
+		if (mapa.getCella(X - 1, Y) == Cella::VACIA) {
+			Position.X--;
 		}
-		break;
-	case 3:
-		if (mapa.getCella(Position.X , Position.Y += 1) == Cella::VACIA) {
-			Position.Y += 1;
+	}
+	if (newNumPosition == 3) {
+		if (mapa.getCella(X, Y + 1) == Cella::VACIA) {
+			Position.Y++;
 		}
-		
-		break;
-	case 4:
-		if (mapa.getCella(Position.X, Position.Y -= 1) == Cella::VACIA) {
-			Position.Y -= 1;
-		}
-		break;
 
 	}
+	if (newNumPosition == 4) {
+		if (mapa.getCella(X,Y - 1) == Cella::VACIA) {
+			Position.Y--;
+		}
+	}
+
+	
 }

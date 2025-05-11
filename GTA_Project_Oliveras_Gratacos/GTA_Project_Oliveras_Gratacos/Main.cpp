@@ -86,9 +86,19 @@ int main()
 		}
 		
 		mapa.addPlayerMapa(player);
+		
+		for (int i = 0; i < SavePeatones.size(); i++) {
+			if (SavePeatones[i].getCanMove()) {
+				mapa.generateEmpty(SavePeatones[i].GetPosition());
+				SavePeatones[i].NewRandomPosition(mapa);
+				mapa.addPeatoneMapa(SavePeatones[i]);
+			}
+		}
 		//mapa.printPlayerView(player);
-		mapa.printMapaTotal(player);
+		
 
+		
+		mapa.printMapaTotal(player);
 
 		Sleep(500);
 		system("CLS");
