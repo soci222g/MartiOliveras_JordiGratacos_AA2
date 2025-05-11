@@ -23,6 +23,10 @@ int main()
 		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 1, i);
 		SavePeatones.push_back(peatons);
 	}
+	for (int i = 1; i < mapa.GetN_peatones2() + 1; i++) {
+		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 2, i);
+		SavePeatones.push_back(peatons);
+	}
 	
 	mapa.addPlayerMapa(player);
 	int pasAddMapa = 0;
@@ -31,16 +35,6 @@ int main()
 		mapa.addPeatoneMapa(SavePeatones[i]);
 		pasAddMapa++;
 	}
-
-	//mapa.printMapaTotal(player);
-	//mapa.printPlayerView(player);
-	
-	//std::string input;
-	//player.Reed_input(input);
-	//mapa.generateEmpty(player.getVector());
-	//mapa.addPlayerMapa(player);
-
-	//mapa.printMapaTotal(player);
 
 	bool gameOver = false;
 	while (!gameOver)
@@ -71,7 +65,7 @@ int main()
 		}
 		else if (GetAsyncKeyState(VK_SPACE))
 		{
-			//cj.atack(map.getMap(), peatones, numPeatones);
+			//player.robPeaton();
 		}
 		else if (GetAsyncKeyState(VK_ESCAPE))
 		{
