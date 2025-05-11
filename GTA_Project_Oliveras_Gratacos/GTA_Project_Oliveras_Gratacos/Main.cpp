@@ -66,8 +66,12 @@ int main()
 		}
 		else if (GetAsyncKeyState(VK_SPACE))
 		{
-			//player.robPeaton();
-
+			for (int i = 0; i < SavePeatones.size(); i++) {
+				player.AtackPeaton(SavePeatones[i], mapa);
+ 				if (SavePeatones[i].getAlive() == false) {
+					SavePeatones.erase(SavePeatones.begin() + i);
+				}
+			}
 		}
 		else if (GetAsyncKeyState(VK_ESCAPE))
 		{
@@ -90,6 +94,7 @@ int main()
 		mapa.addPlayerMapa(player);
 		
 		for (int i = 0; i < SavePeatones.size(); i++) {
+			player.stopNPC(SavePeatones[i]);
 			if (SavePeatones[i].getCanMove()) {
 				mapa.generateEmpty(SavePeatones[i].GetPosition());
 				SavePeatones[i].NewRandomPosition(mapa);
@@ -97,11 +102,11 @@ int main()
 			}
 		}
 		
-		//mapa.printPlayerView(player);
+		mapa.printPlayerView(player);
 		
 
 		
-		mapa.printMapaTotal(player);
+		//mapa.printMapaTotal(player);
 
 		Sleep(500);
 		system("CLS");

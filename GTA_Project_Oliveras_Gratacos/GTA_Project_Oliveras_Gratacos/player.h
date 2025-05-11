@@ -1,7 +1,8 @@
 #pragma once
 #include"Vector.h"
-
+#include"peaton.h"
 #include<iostream>
+
 
 enum class Actions
 {
@@ -26,7 +27,9 @@ public:
 	Actions getLastMoveInput() { return lastMoveInput; }
 	void SeeIfCanMove(Mapa mapa);
 
-	void AtackPeaton();
+	void stopNPC(peaton peaton);
+	
+	void AtackPeaton(peaton peatones, Mapa mapa);
 
 	bool GetCanMove() { return canMove; }
 

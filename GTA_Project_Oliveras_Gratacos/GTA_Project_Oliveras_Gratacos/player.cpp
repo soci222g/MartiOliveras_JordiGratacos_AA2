@@ -19,6 +19,20 @@ Player::~Player() {
 
 }
 
+void Player::stopNPC(peaton peaton) {
+	for (int i = position.Y - 1; i < position.Y + 1; i++) {
+		for (int j = position.X - 1; j < position.X + 1; j++) {
+			if (peaton.GetPosition().Y == j && peaton.GetPosition().X == i) {
+				peaton.SetCanMove(false);
+			}
+			else {
+				peaton.SetCanMove(true);
+			}
+
+		}
+	}
+}
+
 void Player::SeeIfCanMove(Mapa mapa) {
 	int X = position.X;
 	int Y = position.Y;
@@ -82,6 +96,41 @@ void Player::Reed_input(Actions input) {
 
 }
 
-void AtackPeaton() {
+void Player::AtackPeaton(peaton peatones, Mapa mapa) {
+	int X = position.X;
+	int Y = position.Y;
 
+	if (lastMoveInput == Actions::UP)
+	{
+		if (mapa.getCella(X, Y - 1) == Cella::PEATON && peatones.GetPosition().X == X && peatones.GetPosition().Y == Y - 1) {
+				bool notDead = false;
+				peatones.setAlive(notDead);
+				mapa.SetCella(X, Y - 1, Cella::DINERO);
+		}
+			
+	}
+	if (lastMoveInput == Actions::DOWN)
+	{
+		if (mapa.getCella(X, Y + 1) == Cella::PEATON && peatones.GetPosition().X == X && peatones.GetPosition().Y == Y + 1) {
+			bool notDead = false;
+			peatones.setAlive(notDead);
+			mapa.SetCella(X, Y + 1, Cella::DINERO);
+		}
+	}
+	if (lastMoveInput == Actions::RIGHT)
+	{
+		if (mapa.getCella(X + 1, Y ) == Cella::PEATON && peatones.GetPosition().X == X + 1 && peatones.GetPosition().Y == Y ) {
+			bool notDead = false;
+			peatones.setAlive(notDead);
+			mapa.SetCella(X + 1, Y, Cella::DINERO);
+		}
+	}
+	if (lastMoveInput == Actions::LEFT)
+	{
+		if (mapa.getCella(X - 1, Y) == Cella::PEATON && peatones.GetPosition().X == X - 1 && peatones.GetPosition().Y == Y ) {
+			bool notDead = false;
+			peatones.setAlive(notDead);
+			mapa.SetCella(X - 1, Y, Cella::DINERO);
+		}
+	}
 }

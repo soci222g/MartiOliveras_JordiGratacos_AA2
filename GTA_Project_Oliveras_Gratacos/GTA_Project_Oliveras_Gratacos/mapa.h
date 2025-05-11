@@ -33,6 +33,8 @@ public:
 	//hacer geters de todo
 
 	int getHeight() { return heigh; }
+	int getWidth() { return width; }
+
 
 	Cella getCella(int x, int y) { return mapa[y][x]; }
 

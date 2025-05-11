@@ -147,6 +147,9 @@ void Mapa::printPlayerView(Player player) {
 			if (mapa[i][j] == Cella::PEATON) {
 				std::cout << " " << "P" << " ";
 			}
+			if (mapa[i][j] == Cella::DINERO) {
+				std::cout << " " << "$" << " ";
+			}
 			
 
 		}
