@@ -22,6 +22,8 @@ public:
 	Movement getMoveInput() { return moveInput; }
 	Vector getVector() { return position; }
 
+	int GetVista() { return vista; }
+
 	void Move_Player(std::string input);
 
 private:

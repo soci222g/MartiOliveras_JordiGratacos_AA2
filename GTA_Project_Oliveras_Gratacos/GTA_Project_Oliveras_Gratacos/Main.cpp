@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include<Windows.h>
-#include<vector>
+
 
 #include"mapa.h"
 #include"player.h"
@@ -34,8 +34,8 @@ int main()
 
 	mapa.addPeatonesMapa(SavePeatones, SavePeatones.size());
 
-	mapa.printMapaTotal(player);
-
+	//mapa.printMapaTotal(player);
+	mapa.printPlayerView(player);
 
 
 

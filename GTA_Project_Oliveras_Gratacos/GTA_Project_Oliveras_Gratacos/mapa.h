@@ -27,6 +27,7 @@ public:
 
 	void printMapaTotal(Player jugador);
 
+	void printPlayerView(Player jugador);
 	//hacer geters de todo
 
 	int getHeight() { return heigh; }
@@ -38,6 +39,8 @@ public:
 
 	int getLimitLeftMapa1() { return limitLeftMapa1; }
 	int getLimitLeftMapa2() { return limitLeftMapa2; }
+
+
 private:
 
 	 int width;
