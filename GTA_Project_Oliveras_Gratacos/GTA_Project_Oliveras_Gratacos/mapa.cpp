@@ -148,8 +148,8 @@ void Mapa::addPlayerMapa(Player playerPos) {
 	for (int i = 0; i < heigh; i++) {
 		for (int j = 0; j < width; j++) {
 
-			if (i == playerPos.getVector().X && j == playerPos.getVector().Y) {
-				mapa[j][i] = Cella::PLAYER;
+			if (j == playerPos.getVector().X && i == playerPos.getVector().Y) {
+				mapa[i][j] = Cella::PLAYER;
 			}
 		}
 	}
@@ -159,8 +159,8 @@ void Mapa::addPeatoneMapa(peaton peatones) {
 	
 		for (int i = 0; i < heigh; i++) {
 			for (int j = 0; j < width; j++) { 
-				if (peatones.GetPosition().X == i && peatones.GetPosition().Y == j) {
-					mapa[j][i] = Cella::PEATON;
+				if (peatones.GetPosition().X == j && peatones.GetPosition().Y == i) {
+					mapa[i][j] = Cella::PEATON;
 					std::cout << peatones.getID() << std::endl;
 					break;
 				}
