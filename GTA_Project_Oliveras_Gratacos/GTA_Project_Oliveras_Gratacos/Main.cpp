@@ -67,6 +67,7 @@ int main()
 		else if (GetAsyncKeyState(VK_SPACE))
 		{
 			//player.robPeaton();
+
 		}
 		else if (GetAsyncKeyState(VK_ESCAPE))
 		{

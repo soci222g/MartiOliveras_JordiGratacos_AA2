@@ -26,6 +26,8 @@ public:
 	Actions getLastMoveInput() { return lastMoveInput; }
 	void SeeIfCanMove(Mapa mapa);
 
+	void AtackPeaton();
+
 	bool GetCanMove() { return canMove; }
 
 	int GetVista() { return vista; }
@@ -39,6 +41,7 @@ private:
 	Vector position;
 	Actions moveInput;
 	Actions lastMoveInput;
+	
 	
 
 	int vista;
