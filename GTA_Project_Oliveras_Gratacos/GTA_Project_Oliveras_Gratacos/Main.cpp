@@ -85,10 +85,7 @@ int main()
 			player.Reed_input(player.getMoveInput());
 		}
 		
-		for (int i = 0;  i < mapa.GetN_peatones1() + mapa.GetN_peatones2(); i++)
-		{
-			SavePeatones[i].NewRandomPosition(mapa);
-		}
+	
 
 		mapa.addPlayerMapa(player);
 		
@@ -99,6 +96,7 @@ int main()
 				mapa.addPeatoneMapa(SavePeatones[i]);
 			}
 		}
+		
 		//mapa.printPlayerView(player);
 		
 
