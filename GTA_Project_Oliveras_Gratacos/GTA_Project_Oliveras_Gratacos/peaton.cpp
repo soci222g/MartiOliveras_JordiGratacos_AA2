@@ -33,7 +33,7 @@ peaton::~peaton() {
 void peaton::NewRandomPosition(Mapa& mapa) {
 	
 	int moveThisFrame = rand() % 1;
-	int newNumPosition = (rand() % 3) + 1 ;
+	int newNumPosition = (rand() % 4) + 1 ;
 
 	int X = Position.X;
 	int Y = Position.Y;
