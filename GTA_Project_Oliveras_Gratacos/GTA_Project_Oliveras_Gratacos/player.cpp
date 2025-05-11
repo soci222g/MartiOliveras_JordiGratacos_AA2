@@ -20,34 +20,39 @@ Player::~Player() {
 }
 
 void Player::SeeIfCanMove(Mapa mapa) {
+	int X = position.X;
+	int Y = position.Y;
 	if (moveInput == Actions::UP) {
-		if (mapa.getCella(position.X, position.Y - 1) == Cella::VACIA || mapa.getCella(position.X, position.Y - 1) == Cella::PEATON) {
+		if (mapa.getCella(X, Y - 1) == Cella::VACIA || mapa.getCella(X, Y - 1) == Cella::PEATON) {
 			canMove = true;
-			std::cout < 
+			
 		}
 		else {
 			canMove = false;
 		}
 	}
 	if (moveInput == Actions::DOWN) {
-		if (mapa.getCella(position.X, position.Y + 1) == Cella::VACIA || mapa.getCella(position.X, position.Y + 1) == Cella::PEATON) {
+		if (mapa.getCella(X, Y + 1) == Cella::VACIA || mapa.getCella(X, Y + 1) == Cella::PEATON) {
 			canMove = true;
+			
 		}
 		else {
 			canMove = false;
 		}
 	}
 	if (moveInput == Actions::RIGHT) {
-		if (mapa.getCella(position.X + 1, position.Y) == Cella::VACIA || mapa.getCella(position.X + 1, position.Y) == Cella::PEATON) {
+		if (mapa.getCella(X + 1, Y) == Cella::VACIA || mapa.getCella(X + 1, Y) == Cella::PEATON) {
 			canMove = true;
+			
 		}
 		else {
 			canMove = false;
 		}
 	}
 	if (moveInput == Actions::LEFT) {
-		if (mapa.getCella(position.X - 1, position.Y) == Cella::VACIA || mapa.getCella(position.X - 1, position.Y) == Cella::PEATON) {
+		if (mapa.getCella(X - 1,Y) == Cella::VACIA || mapa.getCella(X - 1, Y) == Cella::PEATON) {
 			canMove = true;
+			
 		}
 		else {
 			canMove = false;

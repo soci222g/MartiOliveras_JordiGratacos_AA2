@@ -92,16 +92,16 @@ void Mapa::printMapaTotal(Player jugador) {
 				std::cout << " " << " " << " ";
 			}
 			if (mapa[i][j] == Cella::PLAYER) {
-				if (jugador.getMoveInput() == Actions::UP) {
+				if (jugador.getLastMoveInput() == Actions::UP) {
 					std::cout << " " << "^" << " ";
 				}
-				if (jugador.getMoveInput() == Actions::DOWN) {
+				if (jugador.getLastMoveInput() == Actions::DOWN) {
 					std::cout << " " << "v" << " ";
 				}
-				if (jugador.getMoveInput() == Actions::LEFT) {
+				if (jugador.getLastMoveInput() == Actions::LEFT) {
 					std::cout << " " << "<" << " ";
 				}
-				if (jugador.getMoveInput() == Actions::RIGHT) {
+				if (jugador.getLastMoveInput() == Actions::RIGHT) {
 					std::cout << " " << ">" << " ";
 				}
 			}
@@ -119,7 +119,7 @@ void Mapa::printMapaTotal(Player jugador) {
 void Mapa::printPlayerView(Player player) {
 	for (int i = player.getVector().Y - player.GetVista(); i < player.getVector().Y + player.GetVista(); i++) {
 		for (int j = player.getVector().X - player.GetVista(); j < player.getVector().X + player.GetVista(); j++) {
-			if (i < 0 || j < 0 && i > width || j > heigh) {
+			if (i < 0 || j < 0 || i >= heigh || j >= width) {
 				continue;
 			}
 			

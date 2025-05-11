@@ -34,7 +34,7 @@ public:
 
 	int getHeight() { return heigh; }
 
-	Cella getCella(int x, int y) { return mapa[x][y]; }
+	Cella getCella(int x, int y) { return mapa[y][x]; }
 
 	int GetN_peatones1() { return N_peatones1; }
 	int GetN_peatones2() { return N_peatones2; }
