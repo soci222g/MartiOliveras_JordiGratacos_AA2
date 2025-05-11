@@ -1,6 +1,5 @@
 #include"player.h"
-
-
+#include"mapa.h"
 Player::Player()
 {
 	hp = 100;
@@ -10,11 +9,49 @@ Player::Player()
 	moveInput = Actions::UP;
 	lastMoveInput = Actions::UP;
 
-
+	canMove = true;
 	vista = 5;
 }
 
+
+
 Player::~Player() {
+
+}
+
+void Player::SeeIfCanMove(Mapa mapa) {
+	if (moveInput == Actions::UP) {
+		if (mapa.getCella(position.X, position.Y - 1) == Cella::VACIA || mapa.getCella(position.X, position.Y - 1) == Cella::PEATON) {
+			canMove = true;
+		}
+		else {
+			canMove = false;
+		}
+	}
+	if (moveInput == Actions::DOWN) {
+		if (mapa.getCella(position.X, position.Y + 1) == Cella::VACIA || mapa.getCella(position.X, position.Y + 1) == Cella::PEATON) {
+			canMove = true;
+		}
+		else {
+			canMove = false;
+		}
+	}
+	if (moveInput == Actions::RIGHT) {
+		if (mapa.getCella(position.X + 1, position.Y) == Cella::VACIA || mapa.getCella(position.X + 1, position.Y) == Cella::PEATON) {
+			canMove = true;
+		}
+		else {
+			canMove = false;
+		}
+	}
+	if (moveInput == Actions::LEFT) {
+		if (mapa.getCella(position.X - 1, position.Y) == Cella::VACIA || mapa.getCella(position.X - 1, position.Y) == Cella::PEATON) {
+			canMove = true;
+		}
+		else {
+			canMove = false;
+		}
+	}
 
 }
 

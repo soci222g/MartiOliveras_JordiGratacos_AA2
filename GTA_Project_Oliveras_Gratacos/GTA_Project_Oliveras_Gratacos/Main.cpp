@@ -83,7 +83,11 @@ int main()
 		}
 
 		//UPDATE
-		player.Reed_input(player.getMoveInput());
+		player.SeeIfCanMove(mapa);
+		
+		if (player.GetCanMove() == true) {
+			player.Reed_input(player.getMoveInput());
+		}
 		mapa.addPlayerMapa(player);
 		mapa.printPlayerView(player);
 

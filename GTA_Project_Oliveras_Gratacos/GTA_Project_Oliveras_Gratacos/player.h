@@ -1,5 +1,6 @@
 #pragma once
 #include"Vector.h"
+
 #include<iostream>
 
 enum class Actions
@@ -11,7 +12,7 @@ enum class Actions
 	NONE,
 	COUNT,
 };
-
+class Mapa;
 class Player
 {
 public:
@@ -23,6 +24,9 @@ public:
 	Actions getMoveInput() { return moveInput; }
 	Vector getVector() { return position; }
 	Actions getLastMoveInput() { return lastMoveInput; }
+	void SeeIfCanMove(Mapa mapa);
+
+	bool GetCanMove() { return canMove; }
 
 
 	int GetVista() { return vista; }
@@ -32,6 +36,7 @@ public:
 private:
 	int hp;
 	int mony;
+	bool canMove;
 	Vector position;
 	Actions moveInput;
 	Actions lastMoveInput;
