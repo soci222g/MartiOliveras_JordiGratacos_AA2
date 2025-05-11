@@ -22,6 +22,8 @@ public:
 	~Mapa();
 	
 	void addPlayerMapa(Player player);
+
+	void generateEmpty(Vector position);
 	
 	void addPeatoneMapa(peaton peaton);
 

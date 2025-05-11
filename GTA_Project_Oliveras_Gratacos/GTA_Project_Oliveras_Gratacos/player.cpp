@@ -7,7 +7,8 @@ Player::Player()
 	position.X = 4;
 	position.Y = 2;
 	mony = 0;
-	moveInput = Movement::UP;
+	moveInput = Actions::UP;
+	lastMoveInput = Actions::UP;
 
 
 	vista = 5;
@@ -17,37 +18,23 @@ Player::~Player() {
 
 }
 
-void Player::Reed_input(std::string input) {
-	if (input == "W" || input == "w") {
-		moveInput = Movement::UP;
-	}
-
-	if (input == "S" || input == "s") {
-		moveInput = Movement::DOWM;
-	}
-	if (input == "A" || input == "a") {
-		moveInput = Movement::LEFT;
-	}
-	if (input == "D" || input == "d") {
-		moveInput = Movement::RIGHT;
-	}
-
-}
-
-void Player::Move_Player(std::string input) {
-	if (input == "W" || input == "w") {
+void Player::Reed_input(Actions input) {
+	if (input == Actions::UP) {
 		position.Y--;
+		lastMoveInput = Actions::UP;
 	}
 
-	if (input == "S" || input == "s") {
+	if (input == Actions::DOWN) {
 		position.Y++;
+		lastMoveInput = Actions::DOWN;
 	}
-	if (input == "A" || input == "a") {
+	if (input == Actions::LEFT) {
 		position.X--;
+		lastMoveInput = Actions::LEFT;
 	}
-	if (input == "D" || input == "d") {
+	if (input == Actions::RIGHT) {
 		position.X++;
+		lastMoveInput = Actions::RIGHT;
 	}
-
 
 }

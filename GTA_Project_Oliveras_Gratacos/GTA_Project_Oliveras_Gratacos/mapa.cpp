@@ -12,7 +12,7 @@ Mapa::Mapa() {
 	if (configFile.is_open())
 	{
 		configFile >> widthFitx >> separator >> heightFitx >> separator >> nPeatones1 >> separator >> dineroPeaje1 >> separator >> maxDinPeaton1 >> separator >> nPeatones2 >> separator >> dineroPeaje2 >> separator >> maxDinPeaton2;
-		std::cout << widthFitx << " " << heightFitx << " " << nPeatones1 << " " << dineroPeaje1 << " " << maxDinPeaton1 << " " << nPeatones2 << " " << dineroPeaje2 << " " << maxDinPeaton2 << std::endl;
+		//std::cout << widthFitx << " " << heightFitx << " " << nPeatones1 << " " << dineroPeaje1 << " " << maxDinPeaton1 << " " << nPeatones2 << " " << dineroPeaje2 << " " << maxDinPeaton2 << std::endl;
 		configFile.close();
 	}
 	else
@@ -83,16 +83,16 @@ void Mapa::printMapaTotal(Player jugador) {
 				std::cout << " " << " " << " ";
 			}
 			if (mapa[i][j] == Cella::PLAYER) {
-				if (jugador.getMoveInput() == Movement::UP) {
+				if (jugador.getMoveInput() == Actions::UP) {
 					std::cout << " " << "^" << " ";
 				}
-				if (jugador.getMoveInput() == Movement::DOWM) {
+				if (jugador.getMoveInput() == Actions::DOWN) {
 					std::cout << " " << "v" << " ";
 				}
-				if (jugador.getMoveInput() == Movement::LEFT) {
+				if (jugador.getMoveInput() == Actions::LEFT) {
 					std::cout << " " << "<" << " ";
 				}
-				if (jugador.getMoveInput() == Movement::RIGHT) {
+				if (jugador.getMoveInput() == Actions::RIGHT) {
 					std::cout << " " << ">" << " ";
 				}
 			}
@@ -108,26 +108,27 @@ void Mapa::printMapaTotal(Player jugador) {
 }
 
 void Mapa::printPlayerView(Player player) {
-	for (int i = player.getVector().X - player.GetVista(); i < player.getVector().X + player.GetVista(); i++) {
-		for (int j = player.getVector().Y - player.GetVista(); j < player.getVector().X + player.GetVista(); j++) {
-			if (i < 0 || j < 0) {
+	for (int i = player.getVector().Y - player.GetVista(); i < player.getVector().Y + player.GetVista(); i++) {
+		for (int j = player.getVector().X - player.GetVista(); j < player.getVector().X + player.GetVista(); j++) {
+			if (i < 0 || j < 0 && i > width || j > heigh) {
 				continue;
 			}
+			
 			
 			if (mapa[i][j] == Cella::VACIA) {
 				std::cout << " " << " " << " ";
 			}
 			if (mapa[i][j] == Cella::PLAYER) {
-				if (player.getMoveInput() == Movement::UP) {
+				if (player.getLastMoveInput() == Actions::UP) {
 					std::cout << " " << "^" << " ";
 				}
-				if (player.getMoveInput() == Movement::DOWM) {
+				if (player.getLastMoveInput() == Actions::DOWN) {
 					std::cout << " " << "v" << " ";
 				}
-				if (player.getMoveInput() == Movement::LEFT) {
+				if (player.getLastMoveInput() == Actions::LEFT) {
 					std::cout << " " << "<" << " ";
 				}
-				if (player.getMoveInput() == Movement::RIGHT) {
+				if (player.getLastMoveInput() == Actions::RIGHT) {
 					std::cout << " " << ">" << " ";
 				}
 			}
@@ -155,13 +156,24 @@ void Mapa::addPlayerMapa(Player playerPos) {
 	}
 }
 
+void Mapa::generateEmpty(Vector position) {
+	for (int i = 0; i < heigh; i++) {
+		for (int j = 0; j < width; j++) {
+
+			if (j == position.X && i == position.Y) {
+				mapa[i][j] = Cella::VACIA;
+			}
+		}
+	}
+}
+
 void Mapa::addPeatoneMapa(peaton peatones) {
 	
 		for (int i = 0; i < heigh; i++) {
 			for (int j = 0; j < width; j++) { 
 				if (peatones.GetPosition().X == j && peatones.GetPosition().Y == i) {
 					mapa[i][j] = Cella::PEATON;
-					std::cout << peatones.getID() << std::endl;
+					//std::cout << peatones.getID() << std::endl;
 					break;
 				}
 			}	

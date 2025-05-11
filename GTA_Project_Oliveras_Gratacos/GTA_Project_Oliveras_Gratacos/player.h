@@ -2,13 +2,14 @@
 #include"Vector.h"
 #include<iostream>
 
-enum class Movement
+enum class Actions
 {
 	UP,
-	DOWM,
+	DOWN,
 	LEFT,
 	RIGHT,
-	COUNT
+	NONE,
+	COUNT,
 };
 
 class Player
@@ -17,20 +18,23 @@ public:
 	Player();
 	~Player();
 
-	void Reed_input(std::string input);
+	void Reed_input(Actions input);
 
-	Movement getMoveInput() { return moveInput; }
+	Actions getMoveInput() { return moveInput; }
 	Vector getVector() { return position; }
+	Actions getLastMoveInput() { return lastMoveInput; }
+
 
 	int GetVista() { return vista; }
 
-	void Move_Player(std::string input);
+	void setMoveInput(Actions action) { moveInput = action; }
 
 private:
 	int hp;
 	int mony;
 	Vector position;
-	Movement moveInput;
+	Actions moveInput;
+	Actions lastMoveInput;
 	
 
 	int vista;
