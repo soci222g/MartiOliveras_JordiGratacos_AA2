@@ -81,3 +81,7 @@ void Player::Reed_input(Actions input) {
 	}
 
 }
+
+void AtackPeaton() {
+
+}
