@@ -32,13 +32,15 @@ int main()
 	
 	mapa.addPlayerMapa(player);
 	int pasAddMapa = 0;
+	
 	for (int i = 0; i < SavePeatones.size(); i++) {
 		mapa.addPeatoneMapa(SavePeatones[i]);
 		pasAddMapa++;
 	}
 	
+	
 
-	//mapa.printMapaTotal(player);
+	mapa.printMapaTotal(player);
 	//mapa.printPlayerView(player);
 	
 

@@ -30,15 +30,15 @@ Mapa::Mapa() {
 	maxDinero2 = maxDinPeaton2;
 
 
-	mapa = new Cella * [width];
+	mapa = new Cella* [heigh];
 
-	for (int i = 0; i < width; i++)
+	for (int i = 0; i < heigh; i++)
 	{
-		mapa[i] = new Cella[heigh];
+		mapa[i] = new Cella[width];
 	}
 	//full map _vacio
-	for (int i = 0; i < width; i++) {
-		for (int j = 0; j < heigh; j++) {
+	for (int i = 0; i < heigh; i++) {
+		for (int j = 0; j < width; j++) {
 
 			mapa[i][j] = Cella::VACIA;
 		}
@@ -50,24 +50,24 @@ Mapa::Mapa() {
 	limitLeftMapa1 = columna_pared_1;
 	limitLeftMapa2 = columna_pared_2;
 	
-	for (int i = 0; i < width; i++) {
-		for (int j = 0;  j < heigh; j++) {
+	for (int i = 0; i < heigh; i++) {
+		for (int j = 0;  j < width; j++) {
 			
-			if (j == columna_pared_1 || j == columna_pared_2) {
+			if (j == limitLeftMapa1 || j == limitLeftMapa2) {
 				mapa[i][j] = Cella::PARED;
 			}
 		}
 	}
-	for (int i = 0; i < heigh; i++)
+	for (int i = 0; i < width; i++)
 	{
 		mapa[0][i] = Cella::PARED;
-		mapa[width-1][i] = Cella::PARED;
+		mapa[heigh - 1][i] = Cella::PARED;
 	}
 	//setup_paredes verticales
-	for (int j = 0; j < width; j++)
+	for (int j = 0; j < heigh; j++)
 	{
 		mapa[j][0] = Cella::PARED;
-		mapa[j][heigh - 1] = Cella::PARED;
+		mapa[j][width - 1] = Cella::PARED;
 	}
 	
 
@@ -77,8 +77,8 @@ Mapa::Mapa() {
 
 
 void Mapa::printMapaTotal(Player jugador) {
-	for (int i = 0; i < width; i++) {
-		for (int j = 0; j < heigh; j++) {
+	for (int i = 0; i < heigh; i++) {
+		for (int j = 0; j < width; j++) {
 			if (mapa[i][j] == Cella::VACIA) {
 				std::cout << " " << " " << " ";
 			}
@@ -145,8 +145,8 @@ void Mapa::printPlayerView(Player player) {
 }
 
 void Mapa::addPlayerMapa(Player playerPos) {
-	for (int i = 0; i < width; i++) {
-		for (int j = 0; j < heigh; j++) {
+	for (int i = 0; i < heigh; i++) {
+		for (int j = 0; j < width; j++) {
 
 			if (i == playerPos.getVector().X && j == playerPos.getVector().Y) {
 				mapa[j][i] = Cella::PLAYER;
@@ -157,10 +157,10 @@ void Mapa::addPlayerMapa(Player playerPos) {
 
 void Mapa::addPeatoneMapa(peaton peatones) {
 	
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < heigh; j++) { 
+		for (int i = 0; i < heigh; i++) {
+			for (int j = 0; j < width; j++) { 
 				if (peatones.GetPosition().X == i && peatones.GetPosition().Y == j) {
-					mapa[i][j] = Cella::PEATON;
+					mapa[j][i] = Cella::PEATON;
 					std::cout << peatones.getID() << std::endl;
 					break;
 				}
