@@ -23,6 +23,7 @@ int main()
 		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 1, i);
 		SavePeatones.push_back(peatons);
 	}
+
 	for (int i = 1; i < mapa.GetN_peatones2() + 1; i++) {
 		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 2, i);
 		SavePeatones.push_back(peatons);
@@ -84,8 +85,8 @@ int main()
 		}
 		
 		mapa.addPlayerMapa(player);
-		mapa.printPlayerView(player);
-		//mapa.printMapaTotal(player);
+		//mapa.printPlayerView(player);
+		mapa.printMapaTotal(player);
 
 
 		Sleep(500);
