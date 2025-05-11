@@ -28,7 +28,6 @@ public:
 
 	bool GetCanMove() { return canMove; }
 
-
 	int GetVista() { return vista; }
 
 	void setMoveInput(Actions action) { moveInput = action; }

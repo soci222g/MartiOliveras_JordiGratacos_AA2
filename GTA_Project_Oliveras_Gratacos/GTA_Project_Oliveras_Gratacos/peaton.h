@@ -12,6 +12,7 @@ public:
 
 	void SetCanMove(bool newState) { CanMove = newState; }
 	bool getCanMove() { return CanMove; }
+	bool getAlive() { return alive; }
 
 	int getID() { return ID; }
 
@@ -23,6 +24,7 @@ private:
 	Vector Position;
 	bool CanMove;
 	int ID;
+	bool alive;
 };
 
 
