@@ -1,51 +1,78 @@
 #include"player.h"
-
-
+#include"mapa.h"
 Player::Player()
 {
 	hp = 100;
-	position.X = 2;
+	position.X = 4;
 	position.Y = 2;
 	mony = 0;
-	moveInput = Movement::UP;
+	moveInput = Actions::UP;
+	lastMoveInput = Actions::UP;
+
+	canMove = true;
+	vista = 5;
+}
+
+
+
+Player::~Player() {
 
 }
 
-Player::~Player()
-{
+void Player::SeeIfCanMove(Mapa mapa) {
+	if (moveInput == Actions::UP) {
+		if (mapa.getCella(position.X, position.Y - 1) == Cella::VACIA || mapa.getCella(position.X, position.Y - 1) == Cella::PEATON) {
+			canMove = true;
+			std::cout < 
+		}
+		else {
+			canMove = false;
+		}
+	}
+	if (moveInput == Actions::DOWN) {
+		if (mapa.getCella(position.X, position.Y + 1) == Cella::VACIA || mapa.getCella(position.X, position.Y + 1) == Cella::PEATON) {
+			canMove = true;
+		}
+		else {
+			canMove = false;
+		}
+	}
+	if (moveInput == Actions::RIGHT) {
+		if (mapa.getCella(position.X + 1, position.Y) == Cella::VACIA || mapa.getCella(position.X + 1, position.Y) == Cella::PEATON) {
+			canMove = true;
+		}
+		else {
+			canMove = false;
+		}
+	}
+	if (moveInput == Actions::LEFT) {
+		if (mapa.getCella(position.X - 1, position.Y) == Cella::VACIA || mapa.getCella(position.X - 1, position.Y) == Cella::PEATON) {
+			canMove = true;
+		}
+		else {
+			canMove = false;
+		}
+	}
+
 }
 
-void Player::Reed_input(std::string input) {
-	if (input == "W" || input == "w") {
-		moveInput = Movement::UP;
-	}
-
-	if (input == "S" || input == "s") {
-		moveInput = Movement::DOWM;
-	}
-	if (input == "A" || input == "a") {
-		moveInput = Movement::LEFT;
-	}
-	if (input == "D" || input == "d") {
-		moveInput = Movement::RIGHT;
-	}
-
-}
-
-void Player::Move_Player(std::string input) {
-	if (input == "W" || input == "w") {
+void Player::Reed_input(Actions input) {
+	if (input == Actions::UP) {
 		position.Y--;
+		lastMoveInput = Actions::UP;
 	}
 
-	if (input == "S" || input == "s") {
+	if (input == Actions::DOWN) {
 		position.Y++;
+		lastMoveInput = Actions::DOWN;
 	}
-	if (input == "A" || input == "a") {
+	if (input == Actions::LEFT) {
 		position.X--;
+		lastMoveInput = Actions::LEFT;
 	}
-	if (input == "D" || input == "d") {
+	if (input == Actions::RIGHT) {
 		position.X++;
+		lastMoveInput = Actions::RIGHT;
 	}
-
 
 }

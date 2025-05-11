@@ -1,34 +1,45 @@
 #pragma once
 #include"Vector.h"
+
 #include<iostream>
 
-enum class Movement
+enum class Actions
 {
 	UP,
-	DOWM,
+	DOWN,
 	LEFT,
 	RIGHT,
-	COUNT
+	NONE,
+	COUNT,
 };
-
+class Mapa;
 class Player
 {
 public:
 	Player();
 	~Player();
 
-	void Reed_input(std::string input);
+	void Reed_input(Actions input);
 
-	Movement getMoveInput() { return moveInput; }
+	Actions getMoveInput() { return moveInput; }
 	Vector getVector() { return position; }
+	Actions getLastMoveInput() { return lastMoveInput; }
+	void SeeIfCanMove(Mapa mapa);
 
-	void Move_Player(std::string input);
+	bool GetCanMove() { return canMove; }
+
+
+	int GetVista() { return vista; }
+
+	void setMoveInput(Actions action) { moveInput = action; }
 
 private:
 	int hp;
 	int mony;
+	bool canMove;
 	Vector position;
-	Movement moveInput;
+	Actions moveInput;
+	Actions lastMoveInput;
 	
 
 	int vista;
