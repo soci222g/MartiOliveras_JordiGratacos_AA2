@@ -15,6 +15,7 @@ public:
 	bool getAlive() { return alive; }
 
 	
+	
 
 	int getID() { return ID; }
 	void setAlive(bool notDead) { alive = notDead; }

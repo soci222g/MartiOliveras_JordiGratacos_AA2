@@ -1,33 +1,20 @@
 #include"mapa.h"
-#include <fstream>
-#include <iostream>
+#include"lecturaArchivo.h"
 #include<vector>
 
 
 Mapa::Mapa() {
 	//lectura de archivos
-	int widthFitx, heightFitx, nPeatones1, dineroPeaje1, maxDinPeaton1, nPeatones2, dineroPeaje2, maxDinPeaton2;
-	char separator;
-	std::ifstream configFile("config.txt");
-	if (configFile.is_open())
-	{
-		configFile >> widthFitx >> separator >> heightFitx >> separator >> nPeatones1 >> separator >> dineroPeaje1 >> separator >> maxDinPeaton1 >> separator >> nPeatones2 >> separator >> dineroPeaje2 >> separator >> maxDinPeaton2;
-		//std::cout << widthFitx << " " << heightFitx << " " << nPeatones1 << " " << dineroPeaje1 << " " << maxDinPeaton1 << " " << nPeatones2 << " " << dineroPeaje2 << " " << maxDinPeaton2 << std::endl;
-		configFile.close();
-	}
-	else
-	{
-		std::cout << "File ERROR." << std::endl;
-	}
+	LecturaArchivo archivo;
 	//guardamos todas las variables
-	width = widthFitx;
-	heigh = heightFitx;
-	N_peatones1 = nPeatones1;
-	N_peatones2 = nPeatones2;
-	precioPeaje1 = dineroPeaje1;
-	precioPeaje2 = dineroPeaje2;
-	maxDinero1 = maxDinPeaton1;
-	maxDinero2 = maxDinPeaton2;
+	width = archivo.GetWidth();
+	heigh = archivo.GetHeigt();
+	N_peatones1 = archivo.GetnPeatones1();
+	N_peatones2 = archivo.GetnPeatones2();
+	precioPeaje1 = archivo.GetdineroPeaje1();
+	precioPeaje2 = archivo.GetdineroPeaje2();
+	maxDinero1 = archivo.GetmaxDinPeaton1();
+	maxDinero2 = archivo.GetmaxDinPeaton2();
 
 
 	mapa = new Cella* [heigh];
