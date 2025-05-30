@@ -16,7 +16,9 @@ int main()
 	
 	Player player;
 	Mapa mapa;
-	
+
+	const int NUM_FPS = 60;
+
 	std::vector<peaton> SavePeatones;
 	// +1 per el id
 	for (int i = 1; i < mapa.GetN_peatones1() + 1; i++) {
@@ -102,13 +104,13 @@ int main()
 			}
 		}
 		
-		mapa.printPlayerView(player);
+		//mapa.printPlayerView(player);
 		
 
 		
-		//mapa.printMapaTotal(player);
+		mapa.printMapaTotal(player);
 
-		Sleep(500);
+		Sleep(1000/ NUM_FPS);
 		system("CLS");
 	}
 }

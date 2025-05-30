@@ -9,14 +9,14 @@ public:
 
 
 
-	int GetWidth() { return width; }
-	int GetHeigt() { return height; }
-	int GetnPeatones1() { return nPeatones1; }
-	int GetdineroPeaje1() { return dineroPeaje1; }
-	int GetmaxDinPeaton1() { return maxDinPeaton1; }
-	int GetnPeatones2() { return nPeatones2; }
-	int GetdineroPeaje2() { return dineroPeaje2; }
-	int GetmaxDinPeaton2() { return maxDinPeaton2; }
+	int GetWidth() const { return width; }
+	int GetHeigt() const { return height; }
+	int GetnPeatones1() const { return nPeatones1; }
+	int GetdineroPeaje1()const { return dineroPeaje1; }
+	int GetmaxDinPeaton1()const { return maxDinPeaton1; }
+	int GetnPeatones2() const { return nPeatones2; }
+	int GetdineroPeaje2()const { return dineroPeaje2; }
+	int GetmaxDinPeaton2()const { return maxDinPeaton2; }
 
 private:
 

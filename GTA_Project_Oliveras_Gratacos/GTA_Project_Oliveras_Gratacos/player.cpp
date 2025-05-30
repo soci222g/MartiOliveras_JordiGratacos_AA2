@@ -24,6 +24,7 @@ void Player::stopNPC(peaton peaton) {
 		for (int j = position.X - 1; j < position.X + 1; j++) {
 			if (peaton.GetPosition().Y == j && peaton.GetPosition().X == i) {
 				peaton.SetCanMove(false);
+				
 			}
 			else {
 				peaton.SetCanMove(true);
