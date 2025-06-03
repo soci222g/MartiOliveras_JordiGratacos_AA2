@@ -48,7 +48,8 @@ public:
 	int getLimitLeftMapa1() { return limitLeftMapa1; }
 	int getLimitLeftMapa2() { return limitLeftMapa2; }
 
-	
+	int GetMaxDineroIsla1() { return maxDinero1; }
+	int GetMaxDineroIsla2() { return maxDinero2; }
 
 private:
 

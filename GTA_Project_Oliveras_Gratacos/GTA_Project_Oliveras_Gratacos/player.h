@@ -39,6 +39,8 @@ public:
 
 	void EnterCar(Mapa mapa);
 
+	void addDinero(int maxDinero);
+
 private:
 	int hp;
 	int mony;
@@ -47,8 +49,7 @@ private:
 	Actions moveInput;
 	Actions lastMoveInput;
 	int Damage;
-	
-
+	int CurrentIsland;
 	int vista;
 };
 

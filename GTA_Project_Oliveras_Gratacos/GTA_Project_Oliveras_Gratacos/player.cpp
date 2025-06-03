@@ -8,7 +8,7 @@ Player::Player()
 	mony = 0;
 	moveInput = Actions::UP;
 	lastMoveInput = Actions::UP;
-	
+	CurrentIsland = 1;
 	Damage = 100;
 	canMove = true;
 	vista = 5;
@@ -40,6 +40,15 @@ void Player::SeeIfCanMove(Mapa mapa) {
 			canMove = true;
 			
 		}
+		else if (mapa.getCella(X, Y - 1) == Cella::DINERO) {
+			if (CurrentIsland == 1) {
+				addDinero(mapa.GetMaxDineroIsla1());
+			}
+			else if(CurrentIsland == 2){
+				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
+		}
 		else {
 			canMove = false;
 		}
@@ -48,6 +57,15 @@ void Player::SeeIfCanMove(Mapa mapa) {
 		if (mapa.getCella(X, Y + 1) == Cella::VACIA || mapa.getCella(X, Y + 1) == Cella::PEATON) {
 			canMove = true;
 			
+		}
+		else if (mapa.getCella(X, Y + 1) == Cella::DINERO) {
+			if (CurrentIsland == 1) {
+				addDinero(mapa.GetMaxDineroIsla1());
+			}
+			else if (CurrentIsland == 2) {
+				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
 		}
 		else {
 			canMove = false;
@@ -58,6 +76,15 @@ void Player::SeeIfCanMove(Mapa mapa) {
 			canMove = true;
 			
 		}
+		else if (mapa.getCella(X + 1, Y) == Cella::DINERO) {
+			if (CurrentIsland == 1) {
+				addDinero(mapa.GetMaxDineroIsla1());
+			}
+			else if (CurrentIsland == 2) {
+				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
+		}
 		else {
 			canMove = false;
 		}
@@ -67,10 +94,27 @@ void Player::SeeIfCanMove(Mapa mapa) {
 			canMove = true;
 			
 		}
+		else if (mapa.getCella(X - 1, Y) == Cella::DINERO) {
+			if (CurrentIsland == 1) {
+				addDinero(mapa.GetMaxDineroIsla1());
+			}
+			else if (CurrentIsland == 2) {
+				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
+		}
 		else {
 			canMove = false;
 		}
 	}
+
+}
+
+void Player::addDinero(int maxDienro) {
+
+	int monyGet = rand() % maxDienro + 1;
+
+	mony += monyGet;
 
 }
 
