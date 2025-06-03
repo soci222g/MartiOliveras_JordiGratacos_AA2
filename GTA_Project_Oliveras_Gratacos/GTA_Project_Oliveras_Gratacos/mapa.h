@@ -24,6 +24,8 @@ public:
 	void addPlayerMapa(Player player);
 
 	void generateEmpty(Vector position);
+
+	void GenerateCoin(Vector position);
 	
 	void addPeatoneMapa(peaton peaton);
 
@@ -46,6 +48,7 @@ public:
 	int getLimitLeftMapa1() { return limitLeftMapa1; }
 	int getLimitLeftMapa2() { return limitLeftMapa2; }
 
+	
 
 private:
 

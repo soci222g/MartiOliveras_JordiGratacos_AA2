@@ -42,6 +42,15 @@ int main()
 	bool gameOver = false;
 	while (!gameOver)
 	{
+		for (int i = 0; i < SavePeatones.size(); i++) {
+			player.stopNPC(SavePeatones[i]);
+			if (SavePeatones[i].getCanMove()) {
+				mapa.generateEmpty(SavePeatones[i].GetPosition());
+				SavePeatones[i].NewRandomPosition(mapa);
+				mapa.addPeatoneMapa(SavePeatones[i]);
+			}
+		}
+
 		//INPUTS
 		if (GetAsyncKeyState(VK_UP))
 		{
@@ -70,8 +79,10 @@ int main()
 		{
 			for (int i = 0; i < SavePeatones.size(); i++) {
 				player.AtackPeaton(SavePeatones[i], mapa);
+				SavePeatones[i].SeeIFDead();
  				if (SavePeatones[i].getAlive() == false) {
-					SavePeatones.erase(SavePeatones.begin() + i);
+					mapa.GenerateCoin(SavePeatones[i].GetPosition());
+					SavePeatones.erase(SavePeatones.begin() + i);					
 				}
 			}
 		}
@@ -95,14 +106,7 @@ int main()
 
 		mapa.addPlayerMapa(player);
 		
-		for (int i = 0; i < SavePeatones.size(); i++) {
-			player.stopNPC(SavePeatones[i]);
-			if (SavePeatones[i].getCanMove()) {
-				mapa.generateEmpty(SavePeatones[i].GetPosition());
-				SavePeatones[i].NewRandomPosition(mapa);
-				mapa.addPeatoneMapa(SavePeatones[i]);
-			}
-		}
+		
 		
 		//mapa.printPlayerView(player);
 		
@@ -114,3 +118,6 @@ int main()
 		system("CLS");
 	}
 }
+
+
+

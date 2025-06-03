@@ -29,7 +29,7 @@ public:
 
 	void stopNPC(peaton& peaton);
 	
-	void AtackPeaton(peaton peatones, Mapa mapa);
+	void AtackPeaton(peaton& peatones, Mapa mapa);
 
 	bool GetCanMove() const { return canMove; }
 

@@ -21,6 +21,10 @@ public:
 	void setAlive(bool notDead) { alive = notDead; }
 
 	void NewRandomPosition(Mapa& map);
+	void SeeIFDead();
+	void DamagePeaton(int damage);
+	void LifeCoin(Mapa& mapa);
+
 	Vector GetPosition() const { return Position; }
 
 private:
@@ -29,6 +33,7 @@ private:
 	bool CanMove;
 	int ID;
 	bool alive;
+	int HP;
 };
 
 
