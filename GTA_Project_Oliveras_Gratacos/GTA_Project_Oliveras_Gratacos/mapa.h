@@ -33,8 +33,12 @@ public:
 	//hacer geters de todo
 
 	int getHeight() { return heigh; }
+	int getWidth() { return width; }
 
-	Cella getCella(int x, int y) { return mapa[x][y]; }
+
+	Cella getCella(int x, int y) { return mapa[y][x]; }
+
+	void SetCella(int x, int y, Cella cell) { mapa[y][x] == cell; }
 
 	int GetN_peatones1() { return N_peatones1; }
 	int GetN_peatones2() { return N_peatones2; }

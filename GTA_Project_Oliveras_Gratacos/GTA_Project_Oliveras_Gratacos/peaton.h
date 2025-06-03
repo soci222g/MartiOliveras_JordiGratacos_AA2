@@ -11,18 +11,24 @@ public:
 	~peaton();
 
 	void SetCanMove(bool newState) { CanMove = newState; }
-	bool getCanMove() { return CanMove; }
+	bool getCanMove() const { return CanMove; }
+	bool getAlive() const { return alive; }
 
-	int getID() { return ID; }
+	
+	
+
+	int getID() const { return ID; }
+	void setAlive(bool notDead) { alive = notDead; }
 
 	void NewRandomPosition(Mapa& map);
-	Vector GetPosition() { return Position; }
+	Vector GetPosition() const { return Position; }
 
 private:
 
 	Vector Position;
 	bool CanMove;
 	int ID;
+	bool alive;
 };
 
 

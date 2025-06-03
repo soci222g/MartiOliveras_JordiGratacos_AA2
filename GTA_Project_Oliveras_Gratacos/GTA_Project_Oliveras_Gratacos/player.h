@@ -1,7 +1,8 @@
 #pragma once
 #include"Vector.h"
-
+#include"peaton.h"
 #include<iostream>
+
 
 enum class Actions
 {
@@ -21,15 +22,18 @@ public:
 
 	void Reed_input(Actions input);
 
-	Actions getMoveInput() { return moveInput; }
-	Vector getVector() { return position; }
-	Actions getLastMoveInput() { return lastMoveInput; }
+	Actions getMoveInput() const { return moveInput; }
+	Vector getVector()const { return position; }
+	Actions getLastMoveInput() const { return lastMoveInput; }
 	void SeeIfCanMove(Mapa mapa);
 
-	bool GetCanMove() { return canMove; }
+	void stopNPC(peaton peaton);
+	
+	void AtackPeaton(peaton peatones, Mapa mapa);
 
+	bool GetCanMove() const { return canMove; }
 
-	int GetVista() { return vista; }
+	int GetVista() const { return vista; }
 
 	void setMoveInput(Actions action) { moveInput = action; }
 
@@ -40,6 +44,7 @@ private:
 	Vector position;
 	Actions moveInput;
 	Actions lastMoveInput;
+	
 	
 
 	int vista;

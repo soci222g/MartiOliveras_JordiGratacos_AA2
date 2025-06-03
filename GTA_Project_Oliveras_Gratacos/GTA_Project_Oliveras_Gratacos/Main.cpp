@@ -16,11 +16,18 @@ int main()
 	
 	Player player;
 	Mapa mapa;
-	
+
+	const int NUM_FPS = 60;
+
 	std::vector<peaton> SavePeatones;
 	// +1 per el id
 	for (int i = 1; i < mapa.GetN_peatones1() + 1; i++) {
 		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 1, i);
+		SavePeatones.push_back(peatons);
+	}
+
+	for (int i = 1; i < mapa.GetN_peatones2() + 1; i++) {
+		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 2, i);
 		SavePeatones.push_back(peatons);
 	}
 	
@@ -31,16 +38,6 @@ int main()
 		mapa.addPeatoneMapa(SavePeatones[i]);
 		pasAddMapa++;
 	}
-
-	//mapa.printMapaTotal(player);
-	//mapa.printPlayerView(player);
-	
-	//std::string input;
-	//player.Reed_input(input);
-	//mapa.generateEmpty(player.getVector());
-	//mapa.addPlayerMapa(player);
-
-	//mapa.printMapaTotal(player);
 
 	bool gameOver = false;
 	while (!gameOver)
@@ -71,7 +68,12 @@ int main()
 		}
 		else if (GetAsyncKeyState(VK_SPACE))
 		{
-			//cj.atack(map.getMap(), peatones, numPeatones);
+			for (int i = 0; i < SavePeatones.size(); i++) {
+				player.AtackPeaton(SavePeatones[i], mapa);
+ 				if (SavePeatones[i].getAlive() == false) {
+					SavePeatones.erase(SavePeatones.begin() + i);
+				}
+			}
 		}
 		else if (GetAsyncKeyState(VK_ESCAPE))
 		{
@@ -86,15 +88,29 @@ int main()
 		player.SeeIfCanMove(mapa);
 		
 		if (player.GetCanMove() == true) {
-			
+			player.Reed_input(player.getMoveInput());
 		}
-		player.Reed_input(player.getMoveInput());
+		
+	
+
 		mapa.addPlayerMapa(player);
+		
+		for (int i = 0; i < SavePeatones.size(); i++) {
+			player.stopNPC(SavePeatones[i]);
+			if (SavePeatones[i].getCanMove()) {
+				mapa.generateEmpty(SavePeatones[i].GetPosition());
+				SavePeatones[i].NewRandomPosition(mapa);
+				mapa.addPeatoneMapa(SavePeatones[i]);
+			}
+		}
+		
 		//mapa.printPlayerView(player);
+		
+
+		
 		mapa.printMapaTotal(player);
 
-
-		Sleep(500);
+		Sleep(1000/ NUM_FPS);
 		system("CLS");
 	}
 }
