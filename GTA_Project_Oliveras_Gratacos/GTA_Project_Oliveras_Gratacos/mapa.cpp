@@ -98,6 +98,9 @@ void Mapa::printMapaTotal(Player jugador) {
 			if (mapa[i][j] == Cella::PEATON) {
 				std::cout << " " << "P" << " ";
 			}
+			if (mapa[i][j] == Cella::DINERO) {
+				std::cout << " " << "$" << " ";
+			}
 		}
 		std::cout << std::endl;
 	}
