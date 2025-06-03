@@ -183,6 +183,16 @@ void Mapa::addPeatoneMapa(peaton peatones) {
 
 }
 
+void Mapa::GenerateCoin(Vector position) {
+	for (int i = 0; i < heigh; i++) {
+		for (int j = 0; j < width; j++) {
+
+			if (j == position.X && i == position.Y) {
+				mapa[i][j] = Cella::DINERO;
+			}
+		}
+	}
+}
 Mapa::~Mapa() {
 
 }

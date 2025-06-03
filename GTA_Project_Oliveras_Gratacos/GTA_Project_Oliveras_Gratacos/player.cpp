@@ -8,7 +8,8 @@ Player::Player()
 	mony = 0;
 	moveInput = Actions::UP;
 	lastMoveInput = Actions::UP;
-
+	CurrentIsland = 1;
+	Damage = 100;
 	canMove = true;
 	vista = 5;
 }
@@ -39,6 +40,15 @@ void Player::SeeIfCanMove(Mapa mapa) {
 			canMove = true;
 			
 		}
+		else if (mapa.getCella(X, Y - 1) == Cella::DINERO) {
+			if (CurrentIsland == 1) {
+				addDinero(mapa.GetMaxDineroIsla1());
+			}
+			else if(CurrentIsland == 2){
+				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
+		}
 		else {
 			canMove = false;
 		}
@@ -47,6 +57,15 @@ void Player::SeeIfCanMove(Mapa mapa) {
 		if (mapa.getCella(X, Y + 1) == Cella::VACIA || mapa.getCella(X, Y + 1) == Cella::PEATON) {
 			canMove = true;
 			
+		}
+		else if (mapa.getCella(X, Y + 1) == Cella::DINERO) {
+			if (CurrentIsland == 1) {
+				addDinero(mapa.GetMaxDineroIsla1());
+			}
+			else if (CurrentIsland == 2) {
+				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
 		}
 		else {
 			canMove = false;
@@ -57,6 +76,15 @@ void Player::SeeIfCanMove(Mapa mapa) {
 			canMove = true;
 			
 		}
+		else if (mapa.getCella(X + 1, Y) == Cella::DINERO) {
+			if (CurrentIsland == 1) {
+				addDinero(mapa.GetMaxDineroIsla1());
+			}
+			else if (CurrentIsland == 2) {
+				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
+		}
 		else {
 			canMove = false;
 		}
@@ -66,10 +94,27 @@ void Player::SeeIfCanMove(Mapa mapa) {
 			canMove = true;
 			
 		}
+		else if (mapa.getCella(X - 1, Y) == Cella::DINERO) {
+			if (CurrentIsland == 1) {
+				addDinero(mapa.GetMaxDineroIsla1());
+			}
+			else if (CurrentIsland == 2) {
+				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
+		}
 		else {
 			canMove = false;
 		}
 	}
+
+}
+
+void Player::addDinero(int maxDienro) {
+
+	int monyGet = rand() % maxDienro + 1;
+
+	mony += monyGet;
 
 }
 
@@ -94,42 +139,11 @@ void Player::Reed_input(Actions input) {
 
 }
 
-void Player::AtackPeaton(peaton peatones, Mapa mapa) {
+void Player::AtackPeaton(peaton& peatones, Mapa mapa) {
 	int X = position.X;
 	int Y = position.Y;
-
-	if (lastMoveInput == Actions::UP)
-	{
-		if (mapa.getCella(X, Y - 1) == Cella::PEATON && peatones.GetPosition().X == X && peatones.GetPosition().Y == Y - 1) {
-				bool notDead = false;
-				peatones.setAlive(notDead);
-				mapa.SetCella(X, Y - 1, Cella::DINERO);
-		}
-			
-	}
-	if (lastMoveInput == Actions::DOWN)
-	{
-		if (mapa.getCella(X, Y + 1) == Cella::PEATON && peatones.GetPosition().X == X && peatones.GetPosition().Y == Y + 1) {
-			bool notDead = false;
-			peatones.setAlive(notDead);
-			mapa.SetCella(X, Y + 1, Cella::DINERO);
-		}
-	}
-	if (lastMoveInput == Actions::RIGHT)
-	{
-		if (mapa.getCella(X + 1, Y ) == Cella::PEATON && peatones.GetPosition().X == X + 1 && peatones.GetPosition().Y == Y ) {
-			bool notDead = false;
-			peatones.setAlive(notDead);
-			mapa.SetCella(X + 1, Y, Cella::DINERO);
-		}
-	}
-	if (lastMoveInput == Actions::LEFT)
-	{
-		if (mapa.getCella(X - 1, Y) == Cella::PEATON && peatones.GetPosition().X == X - 1 && peatones.GetPosition().Y == Y ) {
-			bool notDead = false;
-			peatones.setAlive(notDead);
-			mapa.SetCella(X - 1, Y, Cella::DINERO);
-		}
+	if (peatones.getCanMove() == false) {
+		peatones.DamagePeaton(Damage);
 	}
 }
 

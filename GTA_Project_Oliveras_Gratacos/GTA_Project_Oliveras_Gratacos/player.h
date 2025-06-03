@@ -29,7 +29,7 @@ public:
 
 	void stopNPC(peaton& peaton);
 	
-	void AtackPeaton(peaton peatones, Mapa mapa);
+	void AtackPeaton(peaton& peatones, Mapa mapa);
 
 	bool GetCanMove() const { return canMove; }
 
@@ -39,6 +39,8 @@ public:
 
 	void EnterCar(Mapa mapa);
 
+	void addDinero(int maxDinero);
+
 private:
 	int hp;
 	int mony;
@@ -47,8 +49,7 @@ private:
 	Actions moveInput;
 	Actions lastMoveInput;
 	int Damage;
-	
-
+	int CurrentIsland;
 	int vista;
 };
 

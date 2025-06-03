@@ -9,7 +9,7 @@ peaton::peaton()
 
 peaton::peaton(int leftLimit1, int left_limit2,int Height, int mapaNum, int id)
 {
-
+	HP = 1;
 	alive = true;
 	ID = id;
 	CanMove = true;
@@ -64,4 +64,17 @@ void peaton::NewRandomPosition(Mapa& mapa) {
 		}
 
 	}
+}
+void peaton::DamagePeaton(int damage) {
+	HP -= damage;
+}
+
+void peaton::SeeIFDead() {
+	if (HP <= 0) {
+		alive = false;
+	}
+}
+
+void peaton::LifeCoin(Mapa& mapa) {
+	mapa.SetCella(Position.X, Position.Y, Cella::DINERO);
 }
