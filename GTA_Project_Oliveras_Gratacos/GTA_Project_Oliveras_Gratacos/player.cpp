@@ -19,19 +19,16 @@ Player::~Player() {
 
 }
 
-void Player::stopNPC(peaton peaton) {
+void Player::stopNPC(peaton& peaton) {
 	for (int i = position.Y - 1; i < position.Y + 1; i++) {
 		for (int j = position.X - 1; j < position.X + 1; j++) {
-			if (peaton.GetPosition().Y == j && peaton.GetPosition().X == i) {
+			if (peaton.GetPosition().Y == i && peaton.GetPosition().X == j) {
 				peaton.SetCanMove(false);
-				
+				return;
 			}
-			else {
-				peaton.SetCanMove(true);
-			}
-
 		}
 	}
+	peaton.SetCanMove(true);
 }
 
 void Player::SeeIfCanMove(Mapa mapa) {
@@ -134,4 +131,9 @@ void Player::AtackPeaton(peaton peatones, Mapa mapa) {
 			mapa.SetCella(X - 1, Y, Cella::DINERO);
 		}
 	}
+}
+
+
+void Player::EnterCar(Mapa mapa) {
+
 }

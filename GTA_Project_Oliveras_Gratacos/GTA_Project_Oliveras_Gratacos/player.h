@@ -27,7 +27,7 @@ public:
 	Actions getLastMoveInput() const { return lastMoveInput; }
 	void SeeIfCanMove(Mapa mapa);
 
-	void stopNPC(peaton peaton);
+	void stopNPC(peaton& peaton);
 	
 	void AtackPeaton(peaton peatones, Mapa mapa);
 
@@ -37,6 +37,8 @@ public:
 
 	void setMoveInput(Actions action) { moveInput = action; }
 
+	void EnterCar(Mapa mapa);
+
 private:
 	int hp;
 	int mony;
@@ -44,7 +46,7 @@ private:
 	Vector position;
 	Actions moveInput;
 	Actions lastMoveInput;
-	
+	int Damage;
 	
 
 	int vista;
