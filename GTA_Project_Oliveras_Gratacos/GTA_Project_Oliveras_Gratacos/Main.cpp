@@ -32,6 +32,13 @@ int main()
 		SavePeatones.push_back(peatons);
 	}
 	
+	int const nCotxes = mapa.GetNCarI1() + mapa.GetNCarI2() + mapa.GetNCarI3();
+
+	Coches coches[nCotxes];
+	for (int i = 0; i < nCotxes; i++) {
+		mapa.addCocheMapa(coches[i]);
+	}
+
 	mapa.addPlayerMapa(player);
 	int pasAddMapa = 0;
 	

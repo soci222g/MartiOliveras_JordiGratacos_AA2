@@ -45,7 +45,7 @@ public:
 
 	Cella getCella(int x, int y) { return mapa[y][x]; }
 
-	void SetCella(int x, int y, Cella cell) { mapa[y][x] == cell; }
+	void SetCella(int x, int y, Cella cell) { mapa[y][x] = cell; }
 
 	void PayPeaje(Player& jugador);
 
