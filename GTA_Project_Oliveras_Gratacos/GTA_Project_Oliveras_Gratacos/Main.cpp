@@ -32,11 +32,26 @@ int main()
 		SavePeatones.push_back(peatons);
 	}
 	
-	int const nCotxes = mapa.GetNCarI1() + mapa.GetNCarI2() + mapa.GetNCarI3();
+	
 
-	Coches coches[nCotxes];
-	for (int i = 0; i < nCotxes; i++) {
-		mapa.addCocheMapa(coches[i]);
+	std::vector<Coches> cotxes;
+
+	for (int i = 1; i < mapa.GetNCarI1() + 1; i++) {
+		Coches coche(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 1, mapa);
+		cotxes.push_back(coche);
+	}
+	for (int i = 1; i < mapa.GetNCarI2() + 1; i++) {
+		Coches coche(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 2, mapa);
+		cotxes.push_back(coche);
+	}
+	for (int i = 1; i < mapa.GetNCarI3() + 1; i++) {
+		Coches coche(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 3, mapa);
+		cotxes.push_back(coche);
+	}
+
+
+	for (int i = 0; i < cotxes.size(); i++) {
+		mapa.addCocheMapa(cotxes[i]);
 	}
 
 	mapa.addPlayerMapa(player);

@@ -30,6 +30,9 @@
     <ClCompile Include="LecturaArchivo.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
+    <ClCompile Include="Coches.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -45,6 +48,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="LecturaArchivo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Coches.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
