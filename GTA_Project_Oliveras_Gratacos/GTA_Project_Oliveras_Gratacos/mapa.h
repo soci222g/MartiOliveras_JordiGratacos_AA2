@@ -47,7 +47,7 @@ public:
 
 	void SetCella(int x, int y, Cella cell) { mapa[y][x] == cell; }
 
-	void PayPeaje(Player jugador);
+	void PayPeaje(Player& jugador);
 
 
 	int GetN_peatones1() { return N_peatones1; }
@@ -80,8 +80,12 @@ private:
 	int apreturaIsla1;
 	int apreturaIsla2;
 
-	 int limitLeftMapa1;
+	int limitLeftMapa1;
 	int limitLeftMapa2;
+
+	bool peaje1;
+	bool peaje2;
+
 
 	Cella** mapa;
 };
