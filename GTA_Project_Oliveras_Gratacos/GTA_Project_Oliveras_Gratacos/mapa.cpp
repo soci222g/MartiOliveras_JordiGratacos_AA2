@@ -15,6 +15,9 @@ Mapa::Mapa() {
 	precioPeaje2 = archivo.GetdineroPeaje2();
 	maxDinero1 = archivo.GetmaxDinPeaton1();
 	maxDinero2 = archivo.GetmaxDinPeaton2();
+	nCarI1 = archivo.GetnCoche1();
+	nCarI2 = archivo.GetnCoche2();
+	nCarI3 = archivo.GetnCoche3();
 
 
 	mapa = new Cella* [heigh];
@@ -230,6 +233,19 @@ void Mapa::addPeatoneMapa(peaton peatones) {
 				}
 			}	
 		}
+
+}
+
+void Mapa::addCocheMapa(Coches coche) {
+
+	for (int i = 0; i < heigh; i++) {
+		for (int j = 0; j < width; j++) {
+			if (coche.GetPositionCar().X == j && coche.GetPositionCar().Y == i) {
+				mapa[i][j] = Cella::COCHE;
+				break;
+			}
+		}
+	}
 
 }
 

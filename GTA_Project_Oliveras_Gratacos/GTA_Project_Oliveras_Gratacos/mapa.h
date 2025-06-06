@@ -2,6 +2,7 @@
 #include"Vector.h"
 #include"player.h"
 #include"peaton.h"
+#include"Coches.h"
 #include<vector>
 
 enum class Cella
@@ -31,6 +32,8 @@ public:
 	
 	void addPeatoneMapa(peaton peaton);
 
+	void addCocheMapa(Coches coche);
+
 	void printMapaTotal(Player jugador);
 
 	void printPlayerView(Player jugador);
@@ -53,7 +56,9 @@ public:
 	int getLimitLeftMapa1() { return limitLeftMapa1; }
 	int getLimitLeftMapa2() { return limitLeftMapa2; }
 
-
+	int GetNCarI1() { return nCarI1; }
+	int GetNCarI2() { return nCarI2; }
+	int GetNCarI3() { return nCarI3; }
 
 
 	int GetMaxDineroIsla1() { return maxDinero1; }
@@ -70,7 +75,9 @@ private:
 	int precioPeaje2;
 	int maxDinero1;
 	int maxDinero2;
-
+	int nCarI1;
+	int nCarI2;
+	int nCarI3;
 
 	int apreturaIsla1;
 	int apreturaIsla2;
