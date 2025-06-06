@@ -40,6 +40,8 @@ Mapa::Mapa() {
 	limitLeftMapa1 = columna_pared_1;
 	limitLeftMapa2 = columna_pared_2;
 
+	peaje1 = false;
+	peaje2 = false;
 
 	apreturaIsla1 =  (rand() % heigh - 2) + 1;
 	apreturaIsla2 =  (rand() % heigh - 2) + 1;
@@ -116,7 +118,7 @@ void Mapa::printMapaTotal(Player jugador) {
 
 
 	}
-	std::cout << "HP player: " << jugador.GetHP();
+	std::cout << "HP player: " << jugador.GetHP() << std::endl;
 	std::cout << "Mony Player: " << jugador.GetMony();
 }
 
@@ -169,8 +171,8 @@ void Mapa::printPlayerView(Player player) {
 	std::cout << "Mony Player: " << player.GetMony();
 }
 
-void Mapa::PayPeaje(Player jugador) {
-	if (apreturaIsla1 <= jugador.GetMony()) {
+void Mapa::PayPeaje(Player& jugador) {
+	if (precioPeaje1 <= jugador.GetMony() && peaje1 == false) {
 
 		for (int i = 0; i < heigh; i++) {
 			for (int j = 0; j < width; j++) {
@@ -180,8 +182,19 @@ void Mapa::PayPeaje(Player jugador) {
 				
 			}
 		}
-		jugador.addDinero(-apreturaIsla1);
-
+		jugador.restDinero(precioPeaje1);
+		peaje1 = true;
+	}
+	if (precioPeaje2 <= jugador.GetMony() && peaje2 == false) {
+		for (int i = 0; i < heigh; i++) {
+			for (int j = 0; j < width; j++) {
+				if (i == apreturaIsla2 && j == limitLeftMapa2) {
+					mapa[i][j] = Cella::VACIA;
+				}
+			}
+		}
+		jugador.restDinero(precioPeaje2);
+		peaje2 = true;
 	}
 
 
