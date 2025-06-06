@@ -8,7 +8,7 @@
 #include"player.h"
 #include"peaton.h"
 #include"Coches.h"
-
+#include"BigSmoke.h"
 
 
 int main()
@@ -17,6 +17,8 @@ int main()
 	
 	Player player;
 	Mapa mapa;
+	BigSmoke BS(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight());
+
 
 	const int NUM_FPS = 60;
 
@@ -59,6 +61,7 @@ int main()
 	}
 
 	mapa.addPlayerMapa(player);
+	mapa.addBigSmokeMapa(BS);
 	int pasAddMapa = 0;
 	
 	for (int i = 0; i < SavePeatones.size(); i++) {
@@ -105,10 +108,25 @@ int main()
 					SavePeatones[i].RespawnPeaton(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(),i, mapa);
 				}
 			}
+			player.AtackBigSmoke(BS, mapa);
+			BS.SeeIFDead();
+			if (BS.getAlive() == false) {
+				gameOver = true;
+			}
+
+
 		}
 		else if (GetAsyncKeyState(VK_ESCAPE))
 		{
 			gameOver = true;
+		}
+		else if (GetAsyncKeyState('E'))
+		{
+			if (player.GetcanEnterCar())
+			{
+				player.setPlVector(player.getVectorCar());
+				player.setInCarTrue();
+			}
 		}
 		else
 		{
@@ -122,7 +140,10 @@ int main()
 			player.Reed_input(player.getMoveInput());
 		}
 		
-	
+		for (int i = 0; i < cotxes.size(); i++)
+		{
+			player.EnterCar(cotxes[i]);
+		}
 
 		for (int i = 0; i < SavePeatones.size(); i++) {
 			player.stopNPC(SavePeatones[i]);
@@ -131,8 +152,8 @@ int main()
 				SavePeatones[i].NewRandomPosition(mapa);
 				mapa.addPeatoneMapa(SavePeatones[i]);
 			}
-			else {
-				if (SavePeatones[i].GetAgresive()) {
+			else { //en caso de que no se puedan mover
+				if (SavePeatones[i].GetAgresive()) { // codigo de si el npc es agresivo
 					if (SavePeatones[i].GetHP() < SavePeatones[i].GetMaxHP()) {
 						if (SavePeatones[i].GetColldownAtack() <= 0) {
 							SavePeatones[i].atackPlayer(player);
@@ -142,11 +163,35 @@ int main()
 							SavePeatones[i].subStracColldown();
 						}
 					}
-				}
+				} //no hace nada en caso contrario
 
 			}
 
 		}
+		//big smoke logic
+		player.stopBS(BS);
+		if (BS.getCanMove()) {
+			mapa.generateEmpty(BS.GetPosition());
+			BS.NewRandomPosition(mapa);
+			mapa.addBigSmokeMapa(BS);
+		}
+		else { //en caso de que no se puedan mover
+			if (BS.GetHP() < BS.GetMaxHP()) {
+					if (BS.GetColldownAtack() <= 0) {
+						BS.atackPlayer(player);
+						BS.ResetColldown();
+					}
+					else {
+						BS.subStracColldown();
+					}
+				
+			} //no hace nada en caso contrario
+
+		}
+
+		
+
+
 
 		mapa.addPlayerMapa(player);
 		

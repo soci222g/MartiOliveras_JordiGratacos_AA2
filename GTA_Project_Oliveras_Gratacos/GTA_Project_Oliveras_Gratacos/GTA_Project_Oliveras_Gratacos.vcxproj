@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BigSmoke.cpp" />
     <ClCompile Include="Coches.cpp" />
     <ClCompile Include="LecturaArchivo.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -135,6 +136,7 @@
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BigSmoke.h" />
     <ClInclude Include="Coches.h" />
     <ClInclude Include="LecturaArchivo.h" />
     <ClInclude Include="Mapa.h" />

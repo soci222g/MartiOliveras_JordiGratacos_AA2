@@ -114,6 +114,9 @@ void Mapa::printMapaTotal(Player jugador) {
 			if (mapa[i][j] == Cella::PEAJE) {
 				std::cout << " " << "T" << " ";
 			}
+			if (mapa[i][j] == Cella::BIG_SMOKE) {
+				std::cout << " " << "B" << " ";
+			}
 		}
 		std::cout << std::endl;
 		
@@ -208,6 +211,17 @@ void Mapa::addPlayerMapa(Player playerPos) {
 
 			if (j == playerPos.getVector().X && i == playerPos.getVector().Y) {
 				mapa[i][j] = Cella::PLAYER;
+			}
+		}
+	}
+}
+
+void Mapa::addBigSmokeMapa(BigSmoke BS) {
+	for (int i = 0; i < heigh; i++) {
+		for (int j = 0; j < width; j++) {
+
+			if (j == BS.GetPosition().X && i == BS.GetPosition().Y) {
+				mapa[i][j] = Cella::BIG_SMOKE;
 			}
 		}
 	}
