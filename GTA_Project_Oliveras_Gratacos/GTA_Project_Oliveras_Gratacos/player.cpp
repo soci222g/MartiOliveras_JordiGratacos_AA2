@@ -32,13 +32,16 @@ void Player::stopNPC(peaton& peaton) {
 	peaton.SetCanMove(true);
 }
 
-void Player::SeeIfCanMove(Mapa mapa) {
+void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
 	int X = position.X;
 	int Y = position.Y;
 	if (moveInput == Actions::UP) {
-		if (mapa.getCella(X, Y - 1) == Cella::VACIA || mapa.getCella(X, Y - 1) == Cella::PEATON) {
+		if (mapa.getCella(X, Y - 1) == Cella::VACIA ) {
 			canMove = true;
 			
+		}
+		else if (mapa.getCella(X, Y - 1) == Cella::PEAJE) {
+			GameOver = true;
 		}
 		else if (mapa.getCella(X, Y - 1) == Cella::DINERO) {
 			if (CurrentIsland == 1) {
@@ -58,6 +61,9 @@ void Player::SeeIfCanMove(Mapa mapa) {
 			canMove = true;
 			
 		}
+		else if (mapa.getCella(X, Y + 1) == Cella::PEAJE) {
+			GameOver = true;
+		}
 		else if (mapa.getCella(X, Y + 1) == Cella::DINERO) {
 			if (CurrentIsland == 1) {
 				addDinero(mapa.GetMaxDineroIsla1());
@@ -76,6 +82,9 @@ void Player::SeeIfCanMove(Mapa mapa) {
 			canMove = true;
 			
 		}
+		else if (mapa.getCella(X + 1, Y) == Cella::PEAJE) {
+			GameOver = true;
+		}
 		else if (mapa.getCella(X + 1, Y) == Cella::DINERO) {
 			if (CurrentIsland == 1) {
 				addDinero(mapa.GetMaxDineroIsla1());
@@ -93,6 +102,9 @@ void Player::SeeIfCanMove(Mapa mapa) {
 		if (mapa.getCella(X - 1,Y) == Cella::VACIA || mapa.getCella(X - 1, Y) == Cella::PEATON) {
 			canMove = true;
 			
+		}
+		else if (mapa.getCella(X - 1, Y) == Cella::PEAJE) {
+			GameOver = true;
 		}
 		else if (mapa.getCella(X - 1, Y) == Cella::DINERO) {
 			if (CurrentIsland == 1) {

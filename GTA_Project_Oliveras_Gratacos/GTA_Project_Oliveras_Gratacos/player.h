@@ -25,7 +25,7 @@ public:
 	Actions getMoveInput() const { return moveInput; }
 	Vector getVector()const { return position; }
 	Actions getLastMoveInput() const { return lastMoveInput; }
-	void SeeIfCanMove(Mapa mapa);
+	void SeeIfCanMove(Mapa mapa, bool& GameOver);
 
 	void stopNPC(peaton& peaton);
 	

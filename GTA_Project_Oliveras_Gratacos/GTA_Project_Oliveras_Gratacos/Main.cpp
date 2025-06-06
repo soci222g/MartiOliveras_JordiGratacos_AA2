@@ -119,7 +119,7 @@ int main()
 		}
 
 		//UPDATE
-		player.SeeIfCanMove(mapa);
+		player.SeeIfCanMove(mapa, gameOver);
 		
 		if (player.GetCanMove() == true) {
 			player.Reed_input(player.getMoveInput());
