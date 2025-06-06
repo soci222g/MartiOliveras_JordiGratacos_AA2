@@ -1,5 +1,5 @@
 #include "Coches.h"
-#include"lecturaArchivo.h"
+#include "mapa.h"
 
 Coches::Coches()
 {	
