@@ -86,18 +86,26 @@ void Mapa::printMapaTotal(Player jugador) {
 				std::cout << " " << " " << " ";
 			}
 			if (mapa[i][j] == Cella::PLAYER) {
-				if (jugador.getLastMoveInput() == Actions::UP) {
-					std::cout << " " << "^" << " ";
+				if (jugador.GetInCar())
+				{
+					std::cout << " " << "C" << " ";
 				}
-				if (jugador.getLastMoveInput() == Actions::DOWN) {
-					std::cout << " " << "v" << " ";
+				else
+				{
+					if (jugador.getLastMoveInput() == Actions::UP) {
+						std::cout << " " << "^" << " ";
+					}
+					else if (jugador.getLastMoveInput() == Actions::DOWN) {
+						std::cout << " " << "v" << " ";
+					}
+					else if (jugador.getLastMoveInput() == Actions::LEFT) {
+						std::cout << " " << "<" << " ";
+					}
+					else if (jugador.getLastMoveInput() == Actions::RIGHT) {
+						std::cout << " " << ">" << " ";
+					}
 				}
-				if (jugador.getLastMoveInput() == Actions::LEFT) {
-					std::cout << " " << "<" << " ";
-				}
-				if (jugador.getLastMoveInput() == Actions::RIGHT) {
-					std::cout << " " << ">" << " ";
-				}
+
 			}
 			if (mapa[i][j] == Cella::PARED) {
 				std::cout << " " << "X" << " ";
@@ -139,17 +147,24 @@ void Mapa::printPlayerView(Player player) {
 				std::cout << " " << " " << " ";
 			}
 			if (mapa[i][j] == Cella::PLAYER) {
-				if (player.getLastMoveInput() == Actions::UP) {
-					std::cout << " " << "^" << " ";
+				if (player.GetInCar())
+				{
+					std::cout << " " << "C" << " ";
 				}
-				if (player.getLastMoveInput() == Actions::DOWN) {
-					std::cout << " " << "v" << " ";
-				}
-				if (player.getLastMoveInput() == Actions::LEFT) {
-					std::cout << " " << "<" << " ";
-				}
-				if (player.getLastMoveInput() == Actions::RIGHT) {
-					std::cout << " " << ">" << " ";
+				else
+				{
+					if (player.getLastMoveInput() == Actions::UP) {
+						std::cout << " " << "^" << " ";
+					}
+					else if (player.getLastMoveInput() == Actions::DOWN) {
+						std::cout << " " << "v" << " ";
+					}
+					else if (player.getLastMoveInput() == Actions::LEFT) {
+						std::cout << " " << "<" << " ";
+					}
+					else if (player.getLastMoveInput() == Actions::RIGHT) {
+						std::cout << " " << ">" << " ";
+					}
 				}
 			}
 			if (mapa[i][j] == Cella::PARED) {
