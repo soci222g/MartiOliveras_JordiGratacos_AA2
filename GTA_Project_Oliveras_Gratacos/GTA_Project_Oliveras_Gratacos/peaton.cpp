@@ -13,8 +13,8 @@ peaton::peaton(int leftLimit1, int left_limit2,int Height, int mapaNum, int id)
 	ID = id;
 	CanMove = true;
 	NumIsla = mapaNum;
-	//int tempSelect = rand() % 2;
-	int tempSelect = 0;
+	int tempSelect = rand() % 2 - 0.1;
+	
 	if (tempSelect == 0) {
 		Agresive = true;
 	}
@@ -120,11 +120,11 @@ void peaton::RespawnPeaton(int leftLimit1, int left_limit2, int Height,int id, M
 
 void peaton::atackPlayer(Player& jugador) {
 	jugador.SetHP(powerPeaton);
+	AtackColldown = Frames;
 }
 
 void peaton::DamagePeaton(int damage) {
 	HP -= damage;
-	AtackColldown = Frames;
 }
 
 void peaton::SeeIFDead() {

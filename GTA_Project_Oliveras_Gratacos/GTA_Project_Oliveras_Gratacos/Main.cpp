@@ -161,6 +161,10 @@ int main()
 		
 		mapa.printMapaTotal(player);
 
+		if (player.GetHP() <= 0) {
+			gameOver = true; //aqui va el gestor de escenes
+		}
+
 		Sleep(1000/ NUM_FPS);
 		system("CLS");
 	}
