@@ -33,6 +33,7 @@ public:
 	void SeeIfCanMove(Mapa mapa, bool& GameOver);
 	void setPlVector(Vector v) { position.X = v.X;  position.Y = v.Y; }
 	void setInCarTrue() { inCar = true; }
+	void setFcanEnterCar() { canEnterCar = false; }
 
 	void stopNPC(peaton& peaton);
 	void stopBS(BigSmoke& BS);
@@ -41,6 +42,7 @@ public:
 	void AtackBigSmoke(BigSmoke& BG, Mapa mapa);
 	bool GetCanMove() const { return canMove; }
 	bool GetcanEnterCar() const { return canEnterCar; }
+	bool GetInCar() const { return inCar; }
 
 	int GetVista() const { return vista; }
 

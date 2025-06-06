@@ -124,8 +124,10 @@ int main()
 		{
 			if (player.GetcanEnterCar())
 			{
+				mapa.SetCella(player.getVector().X, player.getVector().Y, Cella::VACIA);
 				player.setPlVector(player.getVectorCar());
 				player.setInCarTrue();
+				player.setFcanEnterCar();
 			}
 		}
 		else
