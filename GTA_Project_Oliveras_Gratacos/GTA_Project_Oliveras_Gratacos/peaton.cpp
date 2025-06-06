@@ -7,23 +7,24 @@ peaton::peaton()
 
 }
 
-peaton::peaton(int leftLimit1, int left_limit2,int width,int Height, int mapaNum, int id)
+peaton::peaton(int leftLimit1, int left_limit2,int Height, int mapaNum, int id)
 {
 	HP = 1;
 	alive = true;
 	ID = id;
 	CanMove = true;
+	NumIsla = mapaNum;
 
-	if (mapaNum == 1) {
+	if (NumIsla == 1) {
 		
 		Position.X = (rand() % (leftLimit1 - 2)) + 1;
 		Position.Y = (rand() % (Height - 2)) + 1;
 	}
-	if (mapaNum == 2) {
+	if (NumIsla == 2) {
 		Position.X = (rand() % (leftLimit1 - 2)) + (leftLimit1 + 2);
 		Position.Y = (rand() % (Height - 2)) + 1;
 	}
-	if (mapaNum == 3) {
+	if (NumIsla == 3) {
 		Position.X = (rand() % (leftLimit1 - 1)) + (left_limit2 + 1); // 27 + 12 
 		Position.Y = (rand() % (Height - 2)) + 1;
 	}
@@ -69,6 +70,34 @@ void peaton::NewRandomPosition(Mapa& mapa) {
 
 	}
 }
+
+
+void peaton::RespawnPeaton(int leftLimit1, int left_limit2, int Height,int id, Mapa mapa) {
+	HP = 1;
+	alive = true;
+	ID = id;
+	CanMove = true;
+
+	if (NumIsla == 1) {
+
+		Position.X = (rand() % (leftLimit1 - 2)) + 1;
+		Position.Y = (rand() % (Height - 2)) + 1;
+	}
+	if (NumIsla == 2) {
+		Position.X = (rand() % (leftLimit1 - 2)) + (leftLimit1 + 2);
+		Position.Y = (rand() % (Height - 2)) + 1;
+	}
+	if (NumIsla == 3) {
+		Position.X = (rand() % (leftLimit1 - 1)) + (left_limit2 + 1); // 27 + 12 
+		Position.Y = (rand() % (Height - 2)) + 1;
+	}
+
+	if (mapa.getCella(Position.X, Position.Y) != Cella::VACIA) {
+		RespawnPeaton(leftLimit1, left_limit2,  Height,id,mapa);
+	}
+	
+}
+
 void peaton::DamagePeaton(int damage) {
 	HP -= damage;
 }
@@ -78,6 +107,8 @@ void peaton::SeeIFDead() {
 		alive = false;
 	}
 }
+
+
 
 void peaton::LifeCoin(Mapa& mapa) {
 	mapa.SetCella(Position.X, Position.Y, Cella::DINERO);

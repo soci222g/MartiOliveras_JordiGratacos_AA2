@@ -7,7 +7,7 @@ class peaton
 {
 public:
 	peaton();
-	peaton(int leftLimit1, int left_limit2, int width,int Height, int mapaNum,int id);
+	peaton(int leftLimit1, int left_limit2,int Height, int mapaNum,int id);
 	~peaton();
 
 	void SetCanMove(bool newState) { CanMove = newState; }
@@ -15,7 +15,8 @@ public:
 	bool getAlive() const { return alive; }
 
 	
-	
+	void RespawnPeaton(int leftLimit1, int left_limit2, int Height, int id, Mapa mapa);
+
 
 	int getID() const { return ID; }
 	void setAlive(bool notDead) { alive = notDead; }
@@ -34,6 +35,7 @@ private:
 	int ID;
 	bool alive;
 	int HP;
+	int NumIsla;
 };
 
 

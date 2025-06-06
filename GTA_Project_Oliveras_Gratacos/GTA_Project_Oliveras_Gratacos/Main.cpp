@@ -82,7 +82,7 @@ int main()
 				SavePeatones[i].SeeIFDead();
  				if (SavePeatones[i].getAlive() == false) {
 					mapa.GenerateCoin(SavePeatones[i].GetPosition());
-					SavePeatones.erase(SavePeatones.begin() + i);					
+					SavePeatones[i].RespawnPeaton(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(),i, mapa);
 				}
 			}
 		}
