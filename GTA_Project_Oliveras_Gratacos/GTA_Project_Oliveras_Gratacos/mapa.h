@@ -3,6 +3,7 @@
 #include"player.h"
 #include"peaton.h"
 #include"Coches.h"
+#include"BigSmoke.h"
 #include<vector>
 
 enum class Cella
@@ -18,6 +19,9 @@ enum class Cella
 	COUNT
 };
 
+class Player;
+class BigSmoke;
+class peaton;
 
 class Mapa
 {
@@ -27,12 +31,13 @@ public:
 	
 	void addPlayerMapa(Player player);
 
+
 	void generateEmpty(Vector position);
 
 	void GenerateCoin(Vector position);
 	
 	void addPeatoneMapa(peaton peaton);
-
+	void addBigSmokeMapa(BigSmoke BS);
 	void addCocheMapa(Coches coche);
 
 	void printMapaTotal(Player jugador);

@@ -34,6 +34,17 @@ void Player::stopNPC(peaton& peaton) {
 	}
 	peaton.SetCanMove(true);
 }
+void Player::stopBS(BigSmoke& BS) {
+	for (int i = position.Y - 1; i < position.Y + 1; i++) {
+		for (int j = position.X - 1; j < position.X + 1; j++) {
+			if (BS.GetPosition().Y == i && BS.GetPosition().X == j) {
+				BS.SetCanMove(false);
+				return;
+			}
+		}
+	}
+	BS.SetCanMove(true);
+}
 
 void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
 	int X = position.X;
@@ -60,7 +71,7 @@ void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
 		}
 	}
 	if (moveInput == Actions::DOWN) {
-		if (mapa.getCella(X, Y + 1) == Cella::VACIA || mapa.getCella(X, Y + 1) == Cella::PEATON) {
+		if (mapa.getCella(X, Y + 1) == Cella::VACIA ) {
 			canMove = true;
 			
 		}
@@ -81,7 +92,7 @@ void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
 		}
 	}
 	if (moveInput == Actions::RIGHT) {
-		if (mapa.getCella(X + 1, Y) == Cella::VACIA || mapa.getCella(X + 1, Y) == Cella::PEATON) {
+		if (mapa.getCella(X + 1, Y) == Cella::VACIA ) {
 			canMove = true;
 			
 		}
@@ -102,7 +113,7 @@ void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
 		}
 	}
 	if (moveInput == Actions::LEFT) {
-		if (mapa.getCella(X - 1,Y) == Cella::VACIA || mapa.getCella(X - 1, Y) == Cella::PEATON) {
+		if (mapa.getCella(X - 1,Y) == Cella::VACIA ) {
 			canMove = true;
 			
 		}
@@ -155,10 +166,16 @@ void Player::Reed_input(Actions input) {
 }
 
 void Player::AtackPeaton(peaton& peatones, Mapa mapa) {
-	int X = position.X;
-	int Y = position.Y;
+
 	if (peatones.getCanMove() == false) {
 		peatones.DamagePeaton(Damage);
+	}
+}
+
+void Player::AtackBigSmoke(BigSmoke& BG, Mapa mapa) {
+
+	if (BG.getCanMove() == false) {
+		BG.DamageBigSmoke(Damage);
 	}
 }
 
