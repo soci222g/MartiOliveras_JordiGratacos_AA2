@@ -14,6 +14,7 @@ enum class Cella
 	DINERO,
 	COCHE,
 	PEAJE,
+	BIG_SMOKE,
 	COUNT
 };
 
@@ -52,6 +53,7 @@ public:
 
 	int GetN_peatones1() { return N_peatones1; }
 	int GetN_peatones2() { return N_peatones2; }
+	int GetN_peatones3() { return N_peatones3; }
 
 	int getLimitLeftMapa1() { return limitLeftMapa1; }
 	int getLimitLeftMapa2() { return limitLeftMapa2; }
@@ -63,7 +65,7 @@ public:
 
 	int GetMaxDineroIsla1() { return maxDinero1; }
 	int GetMaxDineroIsla2() { return maxDinero2; }
-
+	int GetMaxDineroIsla3() { return maxDinero3; }
 private:
 
 	 int width;
@@ -71,10 +73,12 @@ private:
 
 	int N_peatones1;
 	int N_peatones2;
+	int N_peatones3;
 	int precioPeaje1;
 	int precioPeaje2;
 	int maxDinero1;
 	int maxDinero2;
+	int maxDinero3;
 	int nCarI1;
 	int nCarI2;
 	int nCarI3;
