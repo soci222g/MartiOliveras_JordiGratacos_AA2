@@ -56,7 +56,9 @@ public:
 	int getLimitLeftMapa1() { return limitLeftMapa1; }
 	int getLimitLeftMapa2() { return limitLeftMapa2; }
 
-
+	int GetNCarI1() { return nCarI1; }
+	int GetNCarI2() { return nCarI2; }
+	int GetNCarI3() { return nCarI3; }
 
 
 	int GetMaxDineroIsla1() { return maxDinero1; }
