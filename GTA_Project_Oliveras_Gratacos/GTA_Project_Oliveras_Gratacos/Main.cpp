@@ -7,6 +7,7 @@
 #include"mapa.h"
 #include"player.h"
 #include"peaton.h"
+#include"Coches.h"
 
 
 
