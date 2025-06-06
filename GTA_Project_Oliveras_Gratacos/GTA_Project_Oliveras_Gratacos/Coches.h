@@ -1,18 +1,16 @@
 #pragma once
 #include "Vector.h"
 
+class Mapa;
 class Coches
 {
 private:
-	int nCarI1;
-	int nCarI2;
-	int nCarI3;
-	struct Coche {
-		Vector posCar;
-	};
-
+	Vector posCar;
+	bool plInCar;
 public:
 	Coches();
 	~Coches();
+	Vector GetPositionCar() const { return posCar; }
+	bool GetplInCar() const { return plInCar; }
 };
 

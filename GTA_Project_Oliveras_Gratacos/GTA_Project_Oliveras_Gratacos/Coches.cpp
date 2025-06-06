@@ -2,13 +2,19 @@
 #include"lecturaArchivo.h"
 
 Coches::Coches()
-{
-	LecturaArchivo archivo;
-	nCarI1 = archivo.GetnCoche1();
-	nCarI2 = archivo.GetnCoche2();
-	nCarI3 = archivo.GetnCoche3();
+{	
+	plInCar = false;
+	bool aux = false;
+	while (!aux)
+	{
+		Position.X = (rand() % (leftLimit1 - 2)) + 1;
+		Position.Y = (rand() % (Height - 2)) + 1;
 
-
+		if (mapa.getCella(Position.X, Position.Y) == Cella::VACIA)
+		{
+			aux = true;
+		}
+	}
 }
 
 
