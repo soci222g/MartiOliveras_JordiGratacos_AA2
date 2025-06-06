@@ -38,6 +38,8 @@ public:
 	int GetHP() const { return hp; }
 	int GetMony() const { return mony; }
 
+	
+
 	void setMoveInput(Actions action) { moveInput = action; }
 
 	void EnterCar(Mapa mapa);

@@ -105,7 +105,7 @@ void Mapa::printMapaTotal(Player jugador) {
 				std::cout << " " << "C" << " ";
 			}
 			if (mapa[i][j] == Cella::PEAJE) {
-				std::cout << " " << "#" << " ";
+				std::cout << " " << "T" << " ";
 			}
 		}
 		std::cout << std::endl;
@@ -155,7 +155,7 @@ void Mapa::printPlayerView(Player player) {
 				std::cout << " " << "C" << " ";
 			}
 			if (mapa[i][j] == Cella::PEAJE) {
-				std::cout << " " << "#" << " ";
+				std::cout << " " << "T" << " ";
 			}
 
 		}
@@ -164,6 +164,24 @@ void Mapa::printPlayerView(Player player) {
 	}
 	std::cout << "HP player: " << player.GetHP() << std::endl;
 	std::cout << "Mony Player: " << player.GetMony();
+}
+
+void Mapa::PayPeaje(Player jugador) {
+	if (apreturaIsla1 <= jugador.GetMony()) {
+
+		for (int i = 0; i < heigh; i++) {
+			for (int j = 0; j < width; j++) {
+				if (i == apreturaIsla1 && j == limitLeftMapa1 ) {
+					mapa[i][j] = Cella::VACIA;
+				}
+				
+			}
+		}
+		jugador.addDinero(-apreturaIsla1);
+
+	}
+
+
 }
 
 void Mapa::addPlayerMapa(Player playerPos) {
