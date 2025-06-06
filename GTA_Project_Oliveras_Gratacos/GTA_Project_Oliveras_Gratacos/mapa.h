@@ -11,6 +11,8 @@ enum class Cella
 	PARED,
 	PLAYER,
 	DINERO,
+	COCHE,
+	PEAJE,
 	COUNT
 };
 
