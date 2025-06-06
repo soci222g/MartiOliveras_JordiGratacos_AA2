@@ -1,6 +1,7 @@
 #pragma once
 #include"Vector.h"
 #include"peaton.h"
+#include"BigSmoke.h"
 #include<iostream>
 
 
@@ -15,6 +16,7 @@ enum class Actions
 };
 class Mapa;
 class peaton;
+class BigSmoke;
 class Player
 {
 public:
@@ -29,9 +31,10 @@ public:
 	void SeeIfCanMove(Mapa mapa, bool& GameOver);
 
 	void stopNPC(peaton& peaton);
-	
-	void AtackPeaton(peaton& peatones, Mapa mapa);
+	void stopBS(BigSmoke& BS);
 
+	void AtackPeaton(peaton& peatones, Mapa mapa);
+	void AtackBigSmoke(BigSmoke& BG, Mapa mapa);
 	bool GetCanMove() const { return canMove; }
 
 	int GetVista() const { return vista; }
