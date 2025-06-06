@@ -23,6 +23,10 @@ peaton::peaton(int leftLimit1, int left_limit2,int Height, int mapaNum, int id)
 		Position.X = (rand() % (leftLimit1 - 2)) + (leftLimit1 + 2);
 		Position.Y = (rand() % (Height - 2)) + 1;
 	}
+	if (mapaNum == 3) {
+		Position.X = (rand() % (leftLimit1 - 1)) + (left_limit2 + 1); // 27 + 12 
+		Position.Y = (rand() % (Height - 2)) + 1;
+	}
 	
 
 }
