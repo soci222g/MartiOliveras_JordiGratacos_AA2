@@ -6,7 +6,7 @@
 peaton::peaton(int leftLimit1, int left_limit2,int Height, int mapaNum, int id)
 {
 	LecturaArchivo archivo;
-	Frames = 60;
+	Frames = 10; //cada segundo
 	AtackColldown = 0;
 	
 	Alive = true;
