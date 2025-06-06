@@ -46,7 +46,7 @@ public:
 
 	void setMoveInput(Actions action) { moveInput = action; }
 
-	void EnterCar(Mapa mapa);
+	void EnterCar(Coches coche);
 	void restDinero(int DineroResta) {mony = mony - DineroResta;}
 
 	void addDinero(int maxDinero);
@@ -55,6 +55,8 @@ private:
 	int hp;
 	int mony;
 	bool canMove;
+	bool canEnterCar;
+	bool inCar;
 	Vector position;
 	Actions moveInput;
 	Actions lastMoveInput;
