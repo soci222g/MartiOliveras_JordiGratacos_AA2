@@ -120,6 +120,14 @@ int main()
 		{
 			gameOver = true;
 		}
+		else if (GetAsyncKeyState('E'))
+		{
+			if (player.GetcanEnterCar())
+			{
+				player.setPlVector(player.getVectorCar());
+				player.setInCarTrue();
+			}
+		}
 		else
 		{
 			player.setMoveInput(Actions::NONE);
@@ -132,7 +140,10 @@ int main()
 			player.Reed_input(player.getMoveInput());
 		}
 		
-	
+		for (int i = 0; i < cotxes.size(); i++)
+		{
+			player.EnterCar(cotxes[i]);
+		}
 
 		for (int i = 0; i < SavePeatones.size(); i++) {
 			player.stopNPC(SavePeatones[i]);

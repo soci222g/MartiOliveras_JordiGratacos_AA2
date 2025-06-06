@@ -17,6 +17,7 @@ enum class Actions
 class Mapa;
 class peaton;
 class BigSmoke;
+class Coches;
 class Player
 {
 public:
@@ -27,8 +28,11 @@ public:
 
 	Actions getMoveInput() const { return moveInput; }
 	Vector getVector()const { return position; }
+	Vector getVectorCar()const { return posCoche; }
 	Actions getLastMoveInput() const { return lastMoveInput; }
 	void SeeIfCanMove(Mapa mapa, bool& GameOver);
+	void setPlVector(Vector v) { position.X = v.X;  position.Y = v.Y; }
+	void setInCarTrue() { inCar = true; }
 
 	void stopNPC(peaton& peaton);
 	void stopBS(BigSmoke& BS);
@@ -36,6 +40,7 @@ public:
 	void AtackPeaton(peaton& peatones, Mapa mapa);
 	void AtackBigSmoke(BigSmoke& BG, Mapa mapa);
 	bool GetCanMove() const { return canMove; }
+	bool GetcanEnterCar() const { return canEnterCar; }
 
 	int GetVista() const { return vista; }
 
@@ -57,6 +62,7 @@ private:
 	bool canMove;
 	bool canEnterCar;
 	bool inCar;
+	Vector posCoche;
 	Vector position;
 	Actions moveInput;
 	Actions lastMoveInput;

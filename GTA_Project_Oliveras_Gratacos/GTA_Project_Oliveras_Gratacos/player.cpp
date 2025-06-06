@@ -182,14 +182,16 @@ void Player::AtackBigSmoke(BigSmoke& BG, Mapa mapa) {
 }
 
 
-//void Player::EnterCar(Coches coche) {
-//	for (int i = position.Y - 1; i < position.Y + 1; i++) {
-//		for (int j = position.X - 1; j < position.X + 1; j++) {
-//			if (coche.GetPositionCar().Y == i && coche.GetPositionCar().X == j) {
-//				canEnterCar = true;
-//				return;
-//			}
-//		}
-//	}
-//	canEnterCar = false;
-//}
+void Player::EnterCar(Coches coche) {
+	for (int i = position.Y - 1; i < position.Y + 1; i++) {
+		for (int j = position.X - 1; j < position.X + 1; j++) {
+			if (coche.GetPositionCar().Y == i && coche.GetPositionCar().X == j) {
+				canEnterCar = true;
+				posCoche.X = j;
+				posCoche.Y = i;
+				return;
+			}
+		}
+	}
+	canEnterCar = false;
+}
