@@ -44,7 +44,7 @@ public:
 
 	void SetCella(int x, int y, Cella cell) { mapa[y][x] == cell; }
 
-	void PayPeaje(Player jugador);
+	void PayPeaje(Player& jugador);
 
 
 	int GetN_peatones1() { return N_peatones1; }

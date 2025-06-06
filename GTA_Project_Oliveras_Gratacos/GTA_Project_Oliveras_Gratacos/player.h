@@ -43,7 +43,7 @@ public:
 	void setMoveInput(Actions action) { moveInput = action; }
 
 	void EnterCar(Mapa mapa);
-	void restDinero(int DineroResta) {mony -= DineroResta;}
+	void restDinero(int DineroResta) {mony = mony - DineroResta;}
 
 	void addDinero(int maxDinero);
 

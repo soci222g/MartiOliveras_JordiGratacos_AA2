@@ -168,7 +168,7 @@ void Mapa::printPlayerView(Player player) {
 	std::cout << "Mony Player: " << player.GetMony();
 }
 
-void Mapa::PayPeaje(Player jugador) {
+void Mapa::PayPeaje(Player& jugador) {
 	if (precioPeaje1 <= jugador.GetMony() && peaje1 == false) {
 
 		for (int i = 0; i < heigh; i++) {
@@ -179,7 +179,7 @@ void Mapa::PayPeaje(Player jugador) {
 				
 			}
 		}
-		jugador.restDinero(precioPeaje2);
+		jugador.restDinero(precioPeaje1);
 		peaje1 = true;
 	}
 	if (precioPeaje2 <= jugador.GetMony() && peaje2 == false) {
