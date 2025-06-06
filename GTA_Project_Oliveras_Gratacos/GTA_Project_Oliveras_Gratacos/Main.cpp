@@ -122,12 +122,16 @@ int main()
 		}
 		else if (GetAsyncKeyState('E'))
 		{
-			if (player.GetcanEnterCar())
+			if (player.GetcanEnterCar() && !player.GetInCar())
 			{
 				mapa.SetCella(player.getVector().X, player.getVector().Y, Cella::VACIA);
 				player.setPlVector(player.getVectorCar());
 				player.setInCarTrue();
 				player.setFcanEnterCar();
+			}
+			else if (player.GetInCar())
+			{
+
 			}
 		}
 		else
@@ -142,9 +146,12 @@ int main()
 			player.Reed_input(player.getMoveInput());
 		}
 		
-		for (int i = 0; i < cotxes.size(); i++)
+		if (!player.GetInCar())
 		{
-			player.EnterCar(cotxes[i]);
+			for (int i = 0; i < cotxes.size(); i++)
+			{
+				player.EnterCar(cotxes[i]);
+			}
 		}
 
 		for (int i = 0; i < SavePeatones.size(); i++) {
