@@ -47,7 +47,7 @@ Mapa::Mapa() {
 			if (j == limitLeftMapa1 || j == limitLeftMapa2) {
 				mapa[i][j] = Cella::PARED;
 				if (i == apreturaIsla1 && j == limitLeftMapa1 || i == apreturaIsla2 && j == limitLeftMapa2) {
-					mapa[i][j] = Cella::VACIA;
+					mapa[i][j] = Cella::PEAJE;
 				}
 			}
 		}
@@ -101,9 +101,20 @@ void Mapa::printMapaTotal(Player jugador) {
 			if (mapa[i][j] == Cella::DINERO) {
 				std::cout << " " << "$" << " ";
 			}
+			if (mapa[i][j] == Cella::COCHE) {
+				std::cout << " " << "C" << " ";
+			}
+			if (mapa[i][j] == Cella::PEAJE) {
+				std::cout << " " << "#" << " ";
+			}
 		}
 		std::cout << std::endl;
+		
+
+
 	}
+	std::cout << "HP player: " << jugador.GetHP();
+	std::cout << "Mony Player: " << jugador.GetMony();
 }
 
 void Mapa::printPlayerView(Player player) {
@@ -140,11 +151,19 @@ void Mapa::printPlayerView(Player player) {
 			if (mapa[i][j] == Cella::DINERO) {
 				std::cout << " " << "$" << " ";
 			}
-			
+			if (mapa[i][j] == Cella::COCHE) {
+				std::cout << " " << "C" << " ";
+			}
+			if (mapa[i][j] == Cella::PEAJE) {
+				std::cout << " " << "#" << " ";
+			}
 
 		}
 		std::cout << std::endl;
+		
 	}
+	std::cout << "HP player: " << player.GetHP() << std::endl;
+	std::cout << "Mony Player: " << player.GetMony();
 }
 
 void Mapa::addPlayerMapa(Player playerPos) {
