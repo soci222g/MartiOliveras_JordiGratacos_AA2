@@ -1,15 +1,18 @@
 #include"player.h"
 #include"mapa.h"
+#include"lecturaArchivo.h"
 Player::Player()
 {
-	hp = 100;
+	LecturaArchivo archivo;
+
+	hp = archivo.GetHpCJ();
 	position.X = 4;
 	position.Y = 2;
 	mony = 0;
 	moveInput = Actions::UP;
 	lastMoveInput = Actions::UP;
 	CurrentIsland = 1;
-	Damage = 100;
+	Damage = archivo.GetPowerCJ();
 	canMove = true;
 	vista = 5;
 }

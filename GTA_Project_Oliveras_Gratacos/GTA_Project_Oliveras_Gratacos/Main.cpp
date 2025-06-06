@@ -31,7 +31,11 @@ int main()
 		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 2, i);
 		SavePeatones.push_back(peatons);
 	}
-	
+	for (int i = 1; i < mapa.GetN_peatones3() + 1; i++) {
+		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 3, i);
+		SavePeatones.push_back(peatons);
+	}
+
 	
 
 	std::vector<Coches> cotxes;
@@ -65,14 +69,7 @@ int main()
 	bool gameOver = false;
 	while (!gameOver)
 	{
-		for (int i = 0; i < SavePeatones.size(); i++) {
-			player.stopNPC(SavePeatones[i]);
-			if (SavePeatones[i].getCanMove()) {
-				mapa.generateEmpty(SavePeatones[i].GetPosition());
-				SavePeatones[i].NewRandomPosition(mapa);
-				mapa.addPeatoneMapa(SavePeatones[i]);
-			}
-		}
+		
 
 		//INPUTS
 		if (GetAsyncKeyState(VK_UP))
@@ -126,6 +123,30 @@ int main()
 		}
 		
 	
+
+		for (int i = 0; i < SavePeatones.size(); i++) {
+			player.stopNPC(SavePeatones[i]);
+			if (SavePeatones[i].getCanMove()) {
+				mapa.generateEmpty(SavePeatones[i].GetPosition());
+				SavePeatones[i].NewRandomPosition(mapa);
+				mapa.addPeatoneMapa(SavePeatones[i]);
+			}
+			else {
+				if (SavePeatones[i].GetAgresive()) {
+					if (SavePeatones[i].GetHP() < SavePeatones[i].GetMaxHP()) {
+						if (SavePeatones[i].GetColldownAtack() <= 0) {
+							SavePeatones[i].atackPlayer(player);
+							SavePeatones[i].ResetColldown();
+						}
+						else {
+							SavePeatones[i].subStracColldown();
+						}
+					}
+				}
+
+			}
+
+		}
 
 		mapa.addPlayerMapa(player);
 		
