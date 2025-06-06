@@ -5,12 +5,12 @@ class Mapa;
 class Coches
 {
 private:
-	Vector posCar;
+	Vector Position;
 	bool plInCar;
 public:
-	Coches();
+	Coches(int leftLimit1, int left_limit2, int height, int mapaNum, Mapa mapa);
 	~Coches();
-	Vector GetPositionCar() const { return posCar; }
+	Vector GetPositionCar() const { return Position; }
 	bool GetplInCar() const { return plInCar; }
 };
 

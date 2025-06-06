@@ -1,15 +1,18 @@
 #include"player.h"
 #include"mapa.h"
+#include"lecturaArchivo.h"
 Player::Player()
 {
-	hp = 100;
+	LecturaArchivo archivo;
+
+	hp = archivo.GetHpCJ();
 	position.X = 4;
 	position.Y = 2;
 	mony = 0;
 	moveInput = Actions::UP;
 	lastMoveInput = Actions::UP;
 	CurrentIsland = 1;
-	Damage = 100;
+	Damage = archivo.GetPowerCJ();
 	canMove = true;
 	vista = 5;
 }
@@ -32,13 +35,16 @@ void Player::stopNPC(peaton& peaton) {
 	peaton.SetCanMove(true);
 }
 
-void Player::SeeIfCanMove(Mapa mapa) {
+void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
 	int X = position.X;
 	int Y = position.Y;
 	if (moveInput == Actions::UP) {
-		if (mapa.getCella(X, Y - 1) == Cella::VACIA || mapa.getCella(X, Y - 1) == Cella::PEATON) {
+		if (mapa.getCella(X, Y - 1) == Cella::VACIA ) {
 			canMove = true;
 			
+		}
+		else if (mapa.getCella(X, Y - 1) == Cella::PEAJE) {
+			GameOver = true;
 		}
 		else if (mapa.getCella(X, Y - 1) == Cella::DINERO) {
 			if (CurrentIsland == 1) {
@@ -58,6 +64,9 @@ void Player::SeeIfCanMove(Mapa mapa) {
 			canMove = true;
 			
 		}
+		else if (mapa.getCella(X, Y + 1) == Cella::PEAJE) {
+			GameOver = true;
+		}
 		else if (mapa.getCella(X, Y + 1) == Cella::DINERO) {
 			if (CurrentIsland == 1) {
 				addDinero(mapa.GetMaxDineroIsla1());
@@ -76,6 +85,9 @@ void Player::SeeIfCanMove(Mapa mapa) {
 			canMove = true;
 			
 		}
+		else if (mapa.getCella(X + 1, Y) == Cella::PEAJE) {
+			GameOver = true;
+		}
 		else if (mapa.getCella(X + 1, Y) == Cella::DINERO) {
 			if (CurrentIsland == 1) {
 				addDinero(mapa.GetMaxDineroIsla1());
@@ -93,6 +105,9 @@ void Player::SeeIfCanMove(Mapa mapa) {
 		if (mapa.getCella(X - 1,Y) == Cella::VACIA || mapa.getCella(X - 1, Y) == Cella::PEATON) {
 			canMove = true;
 			
+		}
+		else if (mapa.getCella(X - 1, Y) == Cella::PEAJE) {
+			GameOver = true;
 		}
 		else if (mapa.getCella(X - 1, Y) == Cella::DINERO) {
 			if (CurrentIsland == 1) {

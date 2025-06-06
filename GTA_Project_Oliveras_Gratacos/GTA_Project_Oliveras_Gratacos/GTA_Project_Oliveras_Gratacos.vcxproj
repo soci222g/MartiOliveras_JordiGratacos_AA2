@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Coches.cpp" />
     <ClCompile Include="LecturaArchivo.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mapa.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Coches.h" />
     <ClInclude Include="LecturaArchivo.h" />
     <ClInclude Include="Mapa.h" />
     <ClInclude Include="Peaton.h" />

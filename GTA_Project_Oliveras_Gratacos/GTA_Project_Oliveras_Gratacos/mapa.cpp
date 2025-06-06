@@ -11,10 +11,12 @@ Mapa::Mapa() {
 	heigh = archivo.GetHeigt();
 	N_peatones1 = archivo.GetnPeatones1();
 	N_peatones2 = archivo.GetnPeatones2();
+	N_peatones3 = archivo.GetnPeatones3();
 	precioPeaje1 = archivo.GetdineroPeaje1();
 	precioPeaje2 = archivo.GetdineroPeaje2();
 	maxDinero1 = archivo.GetmaxDinPeaton1();
 	maxDinero2 = archivo.GetmaxDinPeaton2();
+	maxDinero3 = archivo.GetmaxDinPeaton3();
 	nCarI1 = archivo.GetnCoche1();
 	nCarI2 = archivo.GetnCoche2();
 	nCarI3 = archivo.GetnCoche3();

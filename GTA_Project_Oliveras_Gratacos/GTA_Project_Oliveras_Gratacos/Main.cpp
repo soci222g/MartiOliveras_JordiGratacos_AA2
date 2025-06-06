@@ -31,12 +31,31 @@ int main()
 		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 2, i);
 		SavePeatones.push_back(peatons);
 	}
-	
-	int const nCotxes = mapa.GetNCarI1() + mapa.GetNCarI2() + mapa.GetNCarI3();
+	for (int i = 1; i < mapa.GetN_peatones3() + 1; i++) {
+		peaton peatons(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 3, i);
+		SavePeatones.push_back(peatons);
+	}
 
-	Coches coches[nCotxes];
-	for (int i = 0; i < nCotxes; i++) {
-		mapa.addCocheMapa(coches[i]);
+	
+
+	std::vector<Coches> cotxes;
+
+	for (int i = 1; i < mapa.GetNCarI1() + 1; i++) {
+		Coches coche(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 1, mapa);
+		cotxes.push_back(coche);
+	}
+	for (int i = 1; i < mapa.GetNCarI2() + 1; i++) {
+		Coches coche(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 2, mapa);
+		cotxes.push_back(coche);
+	}
+	for (int i = 1; i < mapa.GetNCarI3() + 1; i++) {
+		Coches coche(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), 3, mapa);
+		cotxes.push_back(coche);
+	}
+
+
+	for (int i = 0; i < cotxes.size(); i++) {
+		mapa.addCocheMapa(cotxes[i]);
 	}
 
 	mapa.addPlayerMapa(player);
@@ -50,14 +69,7 @@ int main()
 	bool gameOver = false;
 	while (!gameOver)
 	{
-		for (int i = 0; i < SavePeatones.size(); i++) {
-			player.stopNPC(SavePeatones[i]);
-			if (SavePeatones[i].getCanMove()) {
-				mapa.generateEmpty(SavePeatones[i].GetPosition());
-				SavePeatones[i].NewRandomPosition(mapa);
-				mapa.addPeatoneMapa(SavePeatones[i]);
-			}
-		}
+		
 
 		//INPUTS
 		if (GetAsyncKeyState(VK_UP))
@@ -104,13 +116,37 @@ int main()
 		}
 
 		//UPDATE
-		player.SeeIfCanMove(mapa);
+		player.SeeIfCanMove(mapa, gameOver);
 		
 		if (player.GetCanMove() == true) {
 			player.Reed_input(player.getMoveInput());
 		}
 		
 	
+
+		for (int i = 0; i < SavePeatones.size(); i++) {
+			player.stopNPC(SavePeatones[i]);
+			if (SavePeatones[i].getCanMove()) {
+				mapa.generateEmpty(SavePeatones[i].GetPosition());
+				SavePeatones[i].NewRandomPosition(mapa);
+				mapa.addPeatoneMapa(SavePeatones[i]);
+			}
+			else {
+				if (SavePeatones[i].GetAgresive()) {
+					if (SavePeatones[i].GetHP() < SavePeatones[i].GetMaxHP()) {
+						if (SavePeatones[i].GetColldownAtack() <= 0) {
+							SavePeatones[i].atackPlayer(player);
+							SavePeatones[i].ResetColldown();
+						}
+						else {
+							SavePeatones[i].subStracColldown();
+						}
+					}
+				}
+
+			}
+
+		}
 
 		mapa.addPlayerMapa(player);
 		
@@ -124,6 +160,10 @@ int main()
 
 		
 		mapa.printMapaTotal(player);
+
+		if (player.GetHP() <= 0) {
+			gameOver = true; //aqui va el gestor de escenes
+		}
 
 		Sleep(1000/ NUM_FPS);
 		system("CLS");

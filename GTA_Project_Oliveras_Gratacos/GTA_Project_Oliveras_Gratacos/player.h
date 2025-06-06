@@ -14,6 +14,7 @@ enum class Actions
 	COUNT,
 };
 class Mapa;
+class peaton;
 class Player
 {
 public:
@@ -25,7 +26,7 @@ public:
 	Actions getMoveInput() const { return moveInput; }
 	Vector getVector()const { return position; }
 	Actions getLastMoveInput() const { return lastMoveInput; }
-	void SeeIfCanMove(Mapa mapa);
+	void SeeIfCanMove(Mapa mapa, bool& GameOver);
 
 	void stopNPC(peaton& peaton);
 	
@@ -38,7 +39,7 @@ public:
 	int GetHP() const { return hp; }
 	int GetMony() const { return mony; }
 
-	
+	void SetHP(int Damage) { hp -= Damage; }
 
 	void setMoveInput(Actions action) { moveInput = action; }
 
