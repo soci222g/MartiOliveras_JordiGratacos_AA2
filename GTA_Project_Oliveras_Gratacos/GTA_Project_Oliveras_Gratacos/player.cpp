@@ -193,5 +193,4 @@ void Player::EnterCar(Coches coche) {
 			}
 		}
 	}
-	canEnterCar = false;
 }
