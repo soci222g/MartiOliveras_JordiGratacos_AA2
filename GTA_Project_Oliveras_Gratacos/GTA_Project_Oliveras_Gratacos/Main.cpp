@@ -106,6 +106,9 @@ int main()
 
 		mapa.addPlayerMapa(player);
 		
+		mapa.PayPeaje(player);
+
+
 		
 		
 		//mapa.printPlayerView(player);
