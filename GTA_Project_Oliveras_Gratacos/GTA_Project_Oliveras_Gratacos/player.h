@@ -53,7 +53,8 @@ public:
 
 	void setMoveInput(Actions action) { moveInput = action; }
 
-	void EnterCar(Coches coche);
+	void EnterCar(Coches coche, int nCar);
+	//void ExitCar(Mapa mapa, std::vector<Coches> cotxes);
 	void restDinero(int DineroResta) {mony = mony - DineroResta;}
 
 	void addDinero(int maxDinero);
@@ -64,6 +65,7 @@ private:
 	bool canMove;
 	bool canEnterCar;
 	bool inCar;
+	int saveNCar;
 	Vector posCoche;
 	Vector position;
 	Actions moveInput;
