@@ -199,28 +199,79 @@ void Player::EnterCar(Coches coche, int nCar) {
 	}
 }
 
-//void Player::ExitCar(Mapa mapa, std::vector<Coches> cotxes) {
-//	bool aux2 = true;
-//	
-//	while (aux2)
-//	{
-//		int aux = rand() % 4 + 1;
-//		switch (aux)
-//		{
-//		case 1:
-//			if (mapa.getCella(position.X, position.Y - 1) == Cella::VACIA)
-//			{
-//				aux2 = false;
-//				position.Y = position.Y - 1;
-//			}
-//			break;
-//		case 2:
-//			break;
-//		case 3:
-//			break;
-//		case 4:
-//			break;
-//		}
-//	}
-//	inCar = false;
-//}
+void Player::ExitCar(Mapa mapa, std::vector<Coches> cotxes) {
+	bool aux2 = true;
+	
+	while (aux2)
+	{
+		int aux = rand() % 4 + 1;
+		switch (aux)
+		{
+		case 1:
+			if (mapa.getCella(position.X, position.Y - 1) == Cella::VACIA)
+			{
+				for (int i = 0; i < cotxes.size(); i++)
+				{
+					if (i == saveNCar)
+					{
+						cotxes[saveNCar].setPositionCar(position.X, position.Y);
+						mapa.SetCella(position.X, position.Y, Cella::COCHE);
+					}
+				}
+				aux2 = false;
+				position.Y = position.Y - 1;
+				mapa.SetCella(position.X, position.Y, Cella::PLAYER);
+			}
+			break;
+		case 2:
+			if (mapa.getCella(position.X, position.Y + 1) == Cella::VACIA)
+			{
+				for (int i = 0; i < cotxes.size(); i++)
+				{
+					if (i == saveNCar)
+					{
+						cotxes[saveNCar].setPositionCar(position.X, position.Y);
+						mapa.SetCella(position.X, position.Y, Cella::COCHE);
+					}
+				}
+				aux2 = false;
+				position.Y = position.Y + 1;
+				mapa.SetCella(position.X, position.Y, Cella::PLAYER);
+			}
+			break;
+		case 3:
+			if (mapa.getCella(position.X + 1, position.Y) == Cella::VACIA)
+			{
+				for (int i = 0; i < cotxes.size(); i++)
+				{
+					if (i == saveNCar)
+					{
+						cotxes[saveNCar].setPositionCar(position.X, position.Y);
+						mapa.SetCella(position.X, position.Y, Cella::COCHE);
+					}
+				}
+				aux2 = false;
+				position.X = position.X + 1;
+				mapa.SetCella(position.X, position.Y, Cella::PLAYER);
+			}
+			break;
+		case 4:
+			if (mapa.getCella(position.X - 1, position.Y) == Cella::VACIA)
+			{
+				for (int i = 0; i < cotxes.size(); i++)
+				{
+					if (i == saveNCar)
+					{
+						cotxes[saveNCar].setPositionCar(position.X, position.Y);
+						mapa.SetCella(position.X, position.Y, Cella::COCHE);
+					}
+				}
+				aux2 = false;
+				position.X = position.X - 1;
+				mapa.SetCella(position.X, position.Y, Cella::PLAYER);
+			}
+			break;
+		}
+	}
+	inCar = false;
+}

@@ -12,5 +12,6 @@ public:
 	~Coches();
 	Vector GetPositionCar() const { return Position; }
 	bool GetplInCar() const { return plInCar; }
+	void setPositionCar(int x, int y) { Position.X = x; Position.Y = y; }
 };
 
