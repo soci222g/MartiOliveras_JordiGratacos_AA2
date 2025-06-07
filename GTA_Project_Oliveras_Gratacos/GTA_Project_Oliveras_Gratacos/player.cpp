@@ -199,7 +199,7 @@ void Player::EnterCar(Coches coche, int nCar) {
 	}
 }
 
-void Player::ExitCar(Mapa mapa, std::vector<Coches> cotxes) {
+void Player::ExitCar(Mapa& mapa, std::vector<Coches>& cotxes) {
 	bool aux2 = true;
 	
 	while (aux2)

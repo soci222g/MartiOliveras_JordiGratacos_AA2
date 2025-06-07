@@ -2,7 +2,9 @@
 #include"Vector.h"
 #include"peaton.h"
 #include"BigSmoke.h"
+#include"Coches.h"
 #include<iostream>
+#include<vector>
 
 
 enum class Actions
@@ -54,12 +56,13 @@ public:
 	void setMoveInput(Actions action) { moveInput = action; }
 
 	void EnterCar(Coches coche, int nCar);
-	void ExitCar(Mapa mapa, std::vector<Coches> cotxes);
+	void ExitCar(Mapa& mapa, std::vector<Coches>& cotxes);
 	void restDinero(int DineroResta) {mony = mony - DineroResta;}
 
 	void addDinero(int maxDinero);
 
 private:
+	
 	int hp;
 	int mony;
 	bool canMove;
