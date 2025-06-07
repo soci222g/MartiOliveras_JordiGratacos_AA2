@@ -221,7 +221,7 @@ int main()
 				}
 				else if (player.GetInCar())
 				{
-
+					player.ExitCar(mapa, cotxes);
 				}
 				mapa.generateEmpty(player.getVector());
 			}
