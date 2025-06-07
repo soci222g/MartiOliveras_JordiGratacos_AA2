@@ -48,7 +48,7 @@ void Player::stopBS(BigSmoke& BS) {
 	BS.SetCanMove(true);
 }
 
-void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
+void Player::SeeIfCanMove(Mapa mapa, bool& InGame, bool& EndGame) {
 	int X = position.X;
 	int Y = position.Y;
 	if (moveInput == Actions::UP) {
@@ -57,7 +57,8 @@ void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
 			
 		}
 		else if (mapa.getCella(X, Y - 1) == Cella::PEAJE) {
-			GameOver = true;
+			EndGame = true;
+			InGame = false;
 		}
 		else if (mapa.getCella(X, Y - 1) == Cella::DINERO) {
 			if (CurrentIsland == 1) {
@@ -78,7 +79,7 @@ void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
 			
 		}
 		else if (mapa.getCella(X, Y + 1) == Cella::PEAJE) {
-			GameOver = true;
+			EndGame = true;
 		}
 		else if (mapa.getCella(X, Y + 1) == Cella::DINERO) {
 			if (CurrentIsland == 1) {
@@ -99,7 +100,8 @@ void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
 			
 		}
 		else if (mapa.getCella(X + 1, Y) == Cella::PEAJE) {
-			GameOver = true;
+			EndGame = true;
+			InGame = false;
 		}
 		else if (mapa.getCella(X + 1, Y) == Cella::DINERO) {
 			if (CurrentIsland == 1) {
@@ -120,7 +122,8 @@ void Player::SeeIfCanMove(Mapa mapa, bool& GameOver) {
 			
 		}
 		else if (mapa.getCella(X - 1, Y) == Cella::PEAJE) {
-			GameOver = true;
+			EndGame = true;
+			InGame = false;
 		}
 		else if (mapa.getCella(X - 1, Y) == Cella::DINERO) {
 			if (CurrentIsland == 1) {
