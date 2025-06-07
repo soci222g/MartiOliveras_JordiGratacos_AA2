@@ -208,7 +208,7 @@ int main()
 			}
 
 			//UPDATE
-			player.SeeIfCanMove(mapa, gameOver);
+			player.SeeIfCanMove(mapa, GamePlay, EndGame);
 
 			if (player.GetCanMove() == true) {
 				player.Reed_input(player.getMoveInput());
@@ -218,7 +218,7 @@ int main()
 			{
 				for (int i = 0; i < cotxes.size(); i++)
 				{
-					player.EnterCar(cotxes[i]);
+					//player.EnterCar(cotxes[i]);
 				}
 			}
 

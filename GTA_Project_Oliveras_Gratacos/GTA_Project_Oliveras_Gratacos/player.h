@@ -30,7 +30,7 @@ public:
 	Vector getVector()const { return position; }
 	Vector getVectorCar()const { return posCoche; }
 	Actions getLastMoveInput() const { return lastMoveInput; }
-	void SeeIfCanMove(Mapa mapa, bool& GameOver);
+	void SeeIfCanMove(Mapa mapa, bool& InGame, bool& EndGame);
 	void setPlVector(Vector v) { position.X = v.X;  position.Y = v.Y; }
 	void setInCarTrue() { inCar = true; }
 	void setFcanEnterCar() { canEnterCar = false; }
