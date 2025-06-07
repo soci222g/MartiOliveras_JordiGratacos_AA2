@@ -10,21 +10,12 @@
 #include"Coches.h"
 #include"BigSmoke.h"
 
-void instanciateGame() {
-
-}
-
-
-int main()
-{
-	srand(time(NULL));
+void instanciateGame(Player& newPlayer, Mapa& newMapa, BigSmoke& newBigSmoke, std::vector<peaton>& newPeatones, std::vector<Coches>& newCotxes) {
 	
+
 	Player player;
 	Mapa mapa;
 	BigSmoke BS(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight());
-
-
-	
 
 	std::vector<peaton> SavePeatones;
 	// +1 per el id
@@ -42,7 +33,7 @@ int main()
 		SavePeatones.push_back(peatons);
 	}
 
-	
+
 
 	std::vector<Coches> cotxes;
 
@@ -66,12 +57,41 @@ int main()
 
 	mapa.addPlayerMapa(player);
 	mapa.addBigSmokeMapa(BS);
-	int pasAddMapa = 0;
-	
+
+
 	for (int i = 0; i < SavePeatones.size(); i++) {
 		mapa.addPeatoneMapa(SavePeatones[i]);
-		pasAddMapa++;
 	}
+
+	newPlayer = player;
+	newMapa = mapa;
+	newBigSmoke = BS;
+	newPeatones = SavePeatones;
+	newCotxes = cotxes;
+}
+
+
+int main()
+{
+	srand(time(NULL));
+	
+	Player player;
+	Mapa mapa;
+	BigSmoke BS(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight());
+
+
+	
+
+	std::vector<peaton> SavePeatones;
+	// +1 per el id
+	
+
+	
+
+	std::vector<Coches> cotxes;
+
+	
+
 
 	bool gameOver = false;
 	bool InMenu = true;
@@ -108,7 +128,10 @@ int main()
 				if (menuNumPosiiton == 0) {
 					InMenu = false;
 					GamePlay = true;
-					currentTimerEnd = 10;
+					currentTimerEnd = 200;
+					
+					instanciateGame(player, mapa, BS, SavePeatones, cotxes);
+
 				}
 				else if (menuNumPosiiton == 1) {
 					gameOver = true;
@@ -293,6 +316,8 @@ int main()
 			Sleep(1000 / NUM_FPS);
 			system("CLS");
 		}
+
+
 		while (EndGame) {
 			
 			if (currentTimerEnd <= 0) {
