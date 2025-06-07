@@ -231,7 +231,7 @@ int main()
 			}
 
 			//UPDATE
-			player.SeeIfCanMove(mapa, GamePlay, EndGame);
+			player.SeeIfCanMove(mapa, GamePlay, EndGame, SavePeatones);
 
 			if (player.GetCanMove() == true) {
 				player.Reed_input(player.getMoveInput());

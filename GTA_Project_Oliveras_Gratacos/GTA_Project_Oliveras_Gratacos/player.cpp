@@ -48,7 +48,7 @@ void Player::stopBS(BigSmoke& BS) {
 	BS.SetCanMove(true);
 }
 
-void Player::SeeIfCanMove(Mapa mapa, bool& InGame, bool& EndGame) {
+void Player::SeeIfCanMove(Mapa mapa, bool& InGame, bool& EndGame, std::vector<peaton>& peatones) {
 	int X = position.X;
 	int Y = position.Y;
 	if (moveInput == Actions::UP) {
@@ -66,6 +66,67 @@ void Player::SeeIfCanMove(Mapa mapa, bool& InGame, bool& EndGame) {
 			}
 			else if(CurrentIsland == 2){
 				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
+		}
+		else if (mapa.getCella(X, Y - 1) == Cella::PEATON && inCar) {
+			for (int i = 0; i < peatones.size(); i++)
+			{
+				if (peatones[i].GetPosition().X == X && peatones[i].GetPosition().Y == Y - 1)
+				{
+					peatones[i].DamagePeaton(1000);
+					peatones[i].SeeIFDead();
+					peatones[i].RespawnPeaton(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), i, mapa);
+				}
+			}
+			mapa.SetCella(X, Y - 1, Cella::VACIA);
+			
+			bool aux2 = true;
+			while (aux2)
+			{
+				int aux = rand() % 4 + 1;
+				switch (aux) {
+				case 1:
+					if (mapa.getCella(X, Y - 1) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X;
+						aux3.Y = Y - 1;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+						break;
+				case 2:
+					if (mapa.getCella(X, Y + 1) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X;
+						aux3.Y = Y + 1;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 3:
+					if (mapa.getCella(X - 1, Y) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X - 1;
+						aux3.Y = Y;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 4:
+					if (mapa.getCella(X + 1, Y) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X + 1;
+						aux3.Y = Y;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				}
 			}
 			canMove = true;
 		}
@@ -87,6 +148,67 @@ void Player::SeeIfCanMove(Mapa mapa, bool& InGame, bool& EndGame) {
 			}
 			else if (CurrentIsland == 2) {
 				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
+		}
+		else if (mapa.getCella(X, Y + 1) == Cella::PEATON && inCar) {
+			for (int i = 0; i < peatones.size(); i++)
+			{
+				if (peatones[i].GetPosition().X == X && peatones[i].GetPosition().Y == Y + 1)
+				{
+					peatones[i].DamagePeaton(1000);
+					peatones[i].SeeIFDead();
+					peatones[i].RespawnPeaton(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), i, mapa);
+				}
+			}
+			mapa.SetCella(X, Y + 1, Cella::VACIA);
+
+			bool aux2 = true;
+			while (aux2)
+			{
+				int aux = rand() % 4 + 1;
+				switch (aux) {
+				case 1:
+					if (mapa.getCella(X, Y - 1) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X;
+						aux3.Y = Y - 1;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 2:
+					if (mapa.getCella(X, Y + 1) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X;
+						aux3.Y = Y + 1;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 3:
+					if (mapa.getCella(X - 1, Y) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X - 1;
+						aux3.Y = Y;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 4:
+					if (mapa.getCella(X + 1, Y) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X + 1;
+						aux3.Y = Y;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				}
 			}
 			canMove = true;
 		}
@@ -112,6 +234,67 @@ void Player::SeeIfCanMove(Mapa mapa, bool& InGame, bool& EndGame) {
 			}
 			canMove = true;
 		}
+		else if (mapa.getCella(X + 1, Y) == Cella::PEATON && inCar) {
+			for (int i = 0; i < peatones.size(); i++)
+			{
+				if (peatones[i].GetPosition().X == X + 1 && peatones[i].GetPosition().Y == Y)
+				{
+					peatones[i].DamagePeaton(1000);
+					peatones[i].SeeIFDead();
+					peatones[i].RespawnPeaton(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), i, mapa);
+				}
+			}
+			mapa.SetCella(X + 1, Y, Cella::VACIA);
+
+			bool aux2 = true;
+			while (aux2)
+			{
+				int aux = rand() % 4 + 1;
+				switch (aux) {
+				case 1:
+					if (mapa.getCella(X, Y - 1) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X;
+						aux3.Y = Y - 1;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 2:
+					if (mapa.getCella(X, Y + 1) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X;
+						aux3.Y = Y + 1;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 3:
+					if (mapa.getCella(X - 1, Y) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X - 1;
+						aux3.Y = Y;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 4:
+					if (mapa.getCella(X + 1, Y) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X + 1;
+						aux3.Y = Y;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				}
+			}
+			canMove = true;
+		}
 		else {
 			canMove = false;
 		}
@@ -131,6 +314,67 @@ void Player::SeeIfCanMove(Mapa mapa, bool& InGame, bool& EndGame) {
 			}
 			else if (CurrentIsland == 2) {
 				addDinero(mapa.GetMaxDineroIsla2());
+			}
+			canMove = true;
+		}
+		else if (mapa.getCella(X - 1, Y) == Cella::PEATON && inCar) {
+			for (int i = 0; i < peatones.size(); i++)
+			{
+				if (peatones[i].GetPosition().X == X - 1 && peatones[i].GetPosition().Y == Y)
+				{
+					peatones[i].DamagePeaton(1000);
+					peatones[i].SeeIFDead();
+					peatones[i].RespawnPeaton(mapa.getLimitLeftMapa1(), mapa.getLimitLeftMapa2(), mapa.getHeight(), i, mapa);
+				}
+			}
+			mapa.SetCella(X - 1, Y, Cella::VACIA);
+
+			bool aux2 = true;
+			while (aux2)
+			{
+				int aux = rand() % 4 + 1;
+				switch (aux) {
+				case 1:
+					if (mapa.getCella(X, Y - 1) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X;
+						aux3.Y = Y - 1;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 2:
+					if (mapa.getCella(X, Y + 1) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X;
+						aux3.Y = Y + 1;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 3:
+					if (mapa.getCella(X - 1, Y) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X - 1;
+						aux3.Y = Y;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				case 4:
+					if (mapa.getCella(X + 1, Y) == Cella::VACIA)
+					{
+						Vector aux3;
+						aux3.X = X + 1;
+						aux3.Y = Y;
+						mapa.GenerateCoin(aux3);
+						aux2 = false;
+					}
+					break;
+				}
 			}
 			canMove = true;
 		}
