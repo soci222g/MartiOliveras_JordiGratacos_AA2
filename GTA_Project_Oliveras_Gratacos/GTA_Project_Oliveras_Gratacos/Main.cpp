@@ -241,7 +241,7 @@ int main()
 			{
 				for (int i = 0; i < cotxes.size(); i++)
 				{
-					//player.EnterCar(cotxes[i]);
+					player.EnterCar(cotxes[i], i);
 				}
 			}
 
