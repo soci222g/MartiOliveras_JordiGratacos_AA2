@@ -182,15 +182,42 @@ void Player::AtackBigSmoke(BigSmoke& BG, Mapa mapa) {
 }
 
 
-void Player::EnterCar(Coches coche) {
+void Player::EnterCar(Coches coche, int nCar) {
 	for (int i = position.Y - 1; i < position.Y + 1; i++) {
 		for (int j = position.X - 1; j < position.X + 1; j++) {
 			if (coche.GetPositionCar().Y == i && coche.GetPositionCar().X == j) {
 				canEnterCar = true;
 				posCoche.X = j;
 				posCoche.Y = i;
+				saveNCar = nCar;
 				return;
 			}
 		}
 	}
 }
+
+//void Player::ExitCar(Mapa mapa, std::vector<Coches> cotxes) {
+//	bool aux2 = true;
+//	
+//	while (aux2)
+//	{
+//		int aux = rand() % 4 + 1;
+//		switch (aux)
+//		{
+//		case 1:
+//			if (mapa.getCella(position.X, position.Y - 1) == Cella::VACIA)
+//			{
+//				aux2 = false;
+//				position.Y = position.Y - 1;
+//			}
+//			break;
+//		case 2:
+//			break;
+//		case 3:
+//			break;
+//		case 4:
+//			break;
+//		}
+//	}
+//	inCar = false;
+//}
